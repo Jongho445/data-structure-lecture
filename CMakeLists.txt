@@ -3,5 +3,7 @@ project(data_structure_lecture)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(data_structure_lecture main.cpp classes/Person.cpp classes/Person.h classes/Animal.h)
+add_executable(
+        data_structure_lecture main.cpp
+        ch3/array/GameEntry.h ch3/array/GameEntry.cpp ch3/array/Scores.cpp ch3/array/Scores.h ch3/array/exception/IndexOutOfBounds.cpp ch3/array/exception/IndexOutOfBounds.h ch3/array/ArrayTest.h)
 

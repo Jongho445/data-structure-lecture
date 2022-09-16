@@ -1,11 +1,8 @@
-#include "classes/Person.h"
-#include "classes/Animal.h"
+#include "cstdlib"
+#include "ch3/array/ArrayTest.h"
 
 int main() {
-    Person p;
-    Animal a;
+    ArrayTest::run();
 
-    p.hello();
-    a.hello();
-    return 0;
+    return EXIT_SUCCESS;
 }
