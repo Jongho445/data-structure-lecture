@@ -1,4 +1,4 @@
-#include <iostream>
+#include "iostream"
 #include "Scores.h"
 #include "exception/IndexOutOfBounds.h"
 
@@ -46,10 +46,17 @@ GameEntry Scores::remove(int i) throw(IndexOutOfBounds) {
     return e;
 }
 
-void Scores::print() {
-    cout << "start print" << endl;
-    for(int i = 0; i < maxEntries; i++) {
-        cout << "name: " << entries[i].getName()
-             << " score: " << entries[i].getScore() << endl;
+// DIY
+string Scores::toString() {
+    string result = "[ ";
+    for(int i = 0; i < numEntries; i++) {
+        result += entries[i].toString();
+
+        if (i != numEntries - 1) {
+            result += ", ";
+        } else {
+            result += " ]";
+        }
     }
+    return result;
 }

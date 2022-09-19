@@ -9,3 +9,7 @@ string GameEntry::getName() const {
 int GameEntry::getScore() const {
     return score;
 }
+
+string GameEntry::toString() {
+    return "{ name: " + name + ", score: " + to_string(score) + " }";
+}

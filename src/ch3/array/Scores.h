@@ -1,7 +1,8 @@
 #ifndef DATA_STRUCTURE_LECTURE_SCORES_H
 #define DATA_STRUCTURE_LECTURE_SCORES_H
 
-#include <string>
+
+#include "string"
 #include "GameEntry.h"
 #include "exception/IndexOutOfBounds.h"
 
@@ -11,9 +12,11 @@ class Scores {
 public:
     Scores(int maxEnt = 10);
     ~Scores();
+
     void add(const GameEntry& e);
-    GameEntry remove(int i) throw(IndexOutOfBounds);
-    void print();
+    GameEntry remove(int i) throw (IndexOutOfBounds);
+
+    string toString();
 private:
     int maxEntries;
     int numEntries;
@@ -21,4 +24,4 @@ private:
 };
 
 
-#endif
+#endif //DATA_STRUCTURE_LECTURE_SCORES_H
