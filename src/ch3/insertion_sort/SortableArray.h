@@ -14,6 +14,8 @@ public:
 private:
     char *chars;
     int length;
+
+    int shiftElemsGreaterThan(int pivotIdx, char cur);
 };
 
 
