@@ -28,7 +28,7 @@ void StringLinkedList::removeFront() {
 // DIY
 string StringLinkedList::toString() {
     string result = "[ ";
-    StringNode* curNode = head ? head : nullptr;
+    StringNode *curNode = head ? head : nullptr;
 
     while (curNode != nullptr) {
         result += curNode->elem;
