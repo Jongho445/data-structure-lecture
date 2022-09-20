@@ -6,8 +6,8 @@
 
 int main() {
 //    ArrayTest::run();
-//    InsertionSortTest::run();
-    SinglyLinkedListTest::run();
+    InsertionSortTest::run();
+//    SinglyLinkedListTest::run();
 
     return EXIT_SUCCESS;
 }

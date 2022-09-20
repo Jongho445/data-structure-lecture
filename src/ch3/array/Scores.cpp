@@ -1,13 +1,12 @@
-#include "iostream"
 #include "Scores.h"
-#include "exception/IndexOutOfBounds.h"
+#include "iostream"
 
 using namespace std;
 
 Scores::Scores(int maxEnt) {
-    maxEntries = maxEnt;
-    entries = new GameEntry[maxEntries];
-    numEntries = 0;
+    size = maxEnt;
+    entries = new GameEntry[size];
+    length = 0;
 }
 
 Scores::~Scores() {
@@ -16,43 +15,44 @@ Scores::~Scores() {
 
 void Scores::add(const GameEntry& e) {
     int newScore = e.getScore();
-    if (numEntries == maxEntries) {
-        if (newScore <= entries[maxEntries - 1].getScore()) return;
+    if (length == size) {
+        if (newScore <= entries[size - 1].getScore()) return;
     } else {
-        numEntries++;
+        length++;
     }
 
-    int i = numEntries - 2;
+    int i = length - 2;
     while ( i >= 0 && newScore > entries[i].getScore() ) {
-        entries[i+1] = entries[i];
+        entries[i + 1] = entries[i];
         i--;
     }
-    entries[i+1] = e;
+    entries[i + 1] = e;
 }
 
 GameEntry Scores::remove(int i) throw(IndexOutOfBounds) {
-    if ((i < 0) || (i >= numEntries)) {
+    if ((i < 0) || (i >= length)) {
         throw IndexOutOfBounds("Invalid index");
     }
 
-    GameEntry e = entries[i];
-    for (int j = i + 1; j < numEntries; j++) {
-        entries[j - 1] = entries[j];
+    GameEntry deletedEntry = entries[i];
+
+    for (; i < length - 1; i++) {
+        entries[i] = entries[i + 1];
     }
-    numEntries--;
 
-    entries[numEntries] = GameEntry(); // 마지막 남은 엔트리 삭제
+    entries[length - 1] = GameEntry(); // 맨 뒤의 엔트리 삭제
+    length--;
 
-    return e;
+    return deletedEntry;
 }
 
 // DIY
 string Scores::toString() {
     string result = "[ ";
-    for(int i = 0; i < numEntries; i++) {
+    for(int i = 0; i < length; i++) {
         result += entries[i].toString();
 
-        if (i != numEntries - 1) {
+        if (i != length - 1) {
             result += ", ";
         } else {
             result += " ]";

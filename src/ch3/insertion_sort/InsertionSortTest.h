@@ -11,17 +11,19 @@ class InsertionSortTest {
 public:
     static void run() {
         // given
-        char data[] = {'c', 'a', 'd', 'b'};
-        int size = sizeof(data) / sizeof(char);
-        SortableArray *arr = new SortableArray(data, size);
+        SortableArray arr = SortableArray(10);
+        arr.add('c');
+        arr.add('a');
+        arr.add('d');
+        arr.add('b');
 
-        cout << arr->toString() << endl;
+        cout << arr.toString() << endl;
 
         // when sorting elems
-        arr->insertionSort();
+        arr.insertionSort();
 
         //then
-        cout << arr->toString() << endl;
+        cout << arr.toString() << endl;
     };
 };
 

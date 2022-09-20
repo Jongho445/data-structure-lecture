@@ -7,9 +7,12 @@ using namespace std;
 
 class SortableArray {
 public:
-    SortableArray(char *arr, int size);
+    SortableArray(int size);
+    ~SortableArray();
 
     void insertionSort();
+
+    void add(char data);
     string toString();
 private:
     char *chars;

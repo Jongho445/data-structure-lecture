@@ -11,23 +11,21 @@ class SinglyLinkedListTest {
 public:
     static void run() {
         // given
-        StringLinkedList *list = new StringLinkedList();
+        StringLinkedList list = StringLinkedList();
 
-        // when adding front elem
-        list->addFront("cat");
-        list->addFront("dog");
-        list->addFront("lion");
-        list->addFront("tiger");
+        list.addFront("cat");
+        list.addFront("dog");
+        list.addFront("lion");
+        list.addFront("tiger");
 
-        // then
-        cout << list->toString() << endl;
+        cout << list.toString() << endl;
 
-        // when removing front elem
-        list->removeFront();
-        list->removeFront();
+        // when removing front elem 2 times
+        list.removeFront();
+        list.removeFront();
 
         // then
-        cout << list->toString() << endl;
+        cout << list.toString() << endl;
     };
 };
 

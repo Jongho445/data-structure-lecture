@@ -11,26 +11,22 @@ class ArrayTest {
 public:
     static void run() {
         // given
-        Scores *scores = new Scores(5);
-        const GameEntry &entry1 = GameEntry("john", 65);
-        const GameEntry &entry2 = GameEntry("peter", 80);
-        const GameEntry &entry3 = GameEntry("kim", 70);
-        const GameEntry &entry4 = GameEntry("park", 90);
+        Scores scores = Scores(5);
 
-        // when adding 4 elems
-        scores->add(entry1);
-        scores->add(entry2);
-        scores->add(entry3);
-        scores->add(entry4);
+        scores.add(GameEntry("john", 65));
+        scores.add(GameEntry("peter", 80));
+        scores.add(GameEntry("kim", 70));
+        scores.add(GameEntry("park", 90));
+        scores.add(GameEntry("lee", 97));
+        scores.add(GameEntry("jane", 95));
 
-        // then
-        cout << scores->toString() << endl;
+        cout << scores.toString() << endl;
 
         // when removing scores[1] elem
-        scores->remove(1);
+        scores.remove(1);
 
         // then
-        cout << scores->toString() << endl;
+        cout << scores.toString() << endl;
     };
 };
 

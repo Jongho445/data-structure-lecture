@@ -13,13 +13,13 @@ public:
     Scores(int maxEnt = 10);
     ~Scores();
 
-    void add(const GameEntry& e);
-    GameEntry remove(int i) throw (IndexOutOfBounds);
+    void add(const GameEntry& entry);
+    GameEntry remove(int i) throw(IndexOutOfBounds);
 
     string toString();
 private:
-    int maxEntries;
-    int numEntries;
+    int size;
+    int length;
     GameEntry* entries;
 };
 

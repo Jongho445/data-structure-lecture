@@ -1,6 +1,13 @@
 #include "SortableArray.h"
 
-SortableArray::SortableArray(char *arr, int size): chars(arr), length(size) {}
+SortableArray::SortableArray(int size) {
+    chars = new char[size];
+    length = 0;
+}
+
+SortableArray::~SortableArray() {
+    delete[] chars;
+}
 
 void SortableArray::insertionSort() {
     for (int pivotIdx = 1; pivotIdx < length; pivotIdx++) {
@@ -21,6 +28,11 @@ int SortableArray::shiftElemsGreaterThan(int pivotIdx, char cur) {
     }
 
     return leftIdx + 1;
+}
+
+void SortableArray::add(char data) {
+    chars[length] = data;
+    length++;
 }
 
 string SortableArray::toString() {
