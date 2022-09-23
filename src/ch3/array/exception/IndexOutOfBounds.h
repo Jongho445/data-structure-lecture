@@ -2,7 +2,6 @@
 #define DATA_STRUCTURE_LECTURE_INDEXOUTOFBOUNDS_H
 
 #include <exception>
-#include <string>
 
 using namespace std;
 

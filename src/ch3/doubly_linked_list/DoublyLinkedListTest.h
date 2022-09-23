@@ -10,21 +10,20 @@ using namespace std;
 class DoublyLinkedListTest {
 public:
     static void run() {
-        // given
         DLinkedList list = DLinkedList();
 
-        list.addFront("a");
-        list.addFront("b");
-        list.addFront("c");
-        list.addFront("d");
+        // add elem to the front, 4 times
+        list.addFront("1st");
+        list.addFront("2nd");
+        list.addFront("3rd");
+        list.addFront("4th");
 
         cout << list.toString() << endl;
 
-        // when: remove front elem 2 times
+        // remove front elem, 2 times
         list.removeFront();
         list.removeFront();
 
-        // then
         cout << list.toString() << endl;
     }
 };

@@ -18,7 +18,7 @@ DLinkedList::~DLinkedList() {
 }
 
 bool DLinkedList::isEmpty() const {
-    return (header->next == trailer);
+    return header->next == trailer;
 }
 
 void DLinkedList::add(DNode* targetNode, const Elem& elem) {
@@ -60,13 +60,13 @@ void DLinkedList::removeBack() {
 
 string DLinkedList::toString() {
     string result = "[ ";
-    DNode *curNode = header->next;
+    DNode *curNode = header;
 
     while (curNode != nullptr) {
         result += curNode->toString();
 
         if (curNode->next != nullptr) {
-            result += ", ";
+            result += " <-> ";
         } else {
             result += " ]";
         }

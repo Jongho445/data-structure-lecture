@@ -19,6 +19,9 @@ private:
     DNode* prev;
     DNode* next;
 
+    bool isHeader();
+    bool isTrailer();
+
     friend class DLinkedList;
 };
 
