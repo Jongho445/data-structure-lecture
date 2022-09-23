@@ -23,6 +23,7 @@ private:
     bool isTrailer();
 
     friend class DLinkedList;
+    friend class DoublyLinkedListTest;
 };
 
 #endif //DATA_STRUCTURE_LECTURE_DNODE_H

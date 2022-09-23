@@ -20,6 +20,8 @@ public:
 private:
     DNode* header;
     DNode* trailer;
+
+    friend class DoublyLinkedListTest;
 protected:
     void add(DNode* targetNode, const Elem& elem);
     void remove(DNode* targetNode);
