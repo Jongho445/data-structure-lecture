@@ -3,12 +3,16 @@
 DLinkedList::DLinkedList() {
     header = new DNode;
     trailer = new DNode;
+
     header->next = trailer;
     trailer->prev = header;
 }
 
 DLinkedList::~DLinkedList() {
-    while (!isEmpty()) removeFront();
+    while (!isEmpty()) {
+        removeFront();
+    }
+
     delete header;
     delete trailer;
 }
@@ -36,14 +40,14 @@ void DLinkedList::addBack(const Elem& elem){
     add(trailer, elem);
 }
 
-void DLinkedList::remove(DNode* removedNode) {
-    DNode* prevNode = removedNode->prev;
-    DNode* nextNode = removedNode->next;
+void DLinkedList::remove(DNode* targetNode) {
+    DNode* prevNode = targetNode->prev;
+    DNode* nextNode = targetNode->next;
 
     prevNode->next = nextNode;
     nextNode->prev = prevNode;
 
-    delete removedNode;
+    delete targetNode;
 }
 
 void DLinkedList::removeFront() {

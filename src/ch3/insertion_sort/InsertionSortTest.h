@@ -19,7 +19,7 @@ public:
 
         cout << arr.toString() << endl;
 
-        // when sorting elems
+        // when: sorting elems
         arr.insertionSort();
 
         //then

@@ -1,5 +1,4 @@
 #include "Scores.h"
-#include "iostream"
 
 using namespace std;
 
@@ -14,15 +13,15 @@ Scores::~Scores() {
 }
 
 void Scores::add(const GameEntry& e) {
-    int newScore = e.getScore();
+    int newScore = e.score;
     if (length == size) {
-        if (newScore <= entries[size - 1].getScore()) return;
+        if (newScore <= entries[size - 1].score) return;
     } else {
         length++;
     }
 
     int i = length - 2;
-    while ( i >= 0 && newScore > entries[i].getScore() ) {
+    while ( i >= 0 && newScore > entries[i].score) {
         entries[i + 1] = entries[i];
         i--;
     }
@@ -34,7 +33,7 @@ GameEntry Scores::remove(int i) throw(IndexOutOfBounds) {
         throw IndexOutOfBounds("Invalid index");
     }
 
-    GameEntry deletedEntry = entries[i];
+    GameEntry targetElem = entries[i];
 
     for (; i < length - 1; i++) {
         entries[i] = entries[i + 1];
@@ -43,7 +42,7 @@ GameEntry Scores::remove(int i) throw(IndexOutOfBounds) {
     entries[length - 1] = GameEntry(); // 맨 뒤의 엔트리 삭제
     length--;
 
-    return deletedEntry;
+    return targetElem;
 }
 
 // DIY

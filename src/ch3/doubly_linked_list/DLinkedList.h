@@ -22,7 +22,7 @@ private:
     DNode* trailer;
 protected:
     void add(DNode* targetNode, const Elem& elem);
-    void remove(DNode* removedNode);
+    void remove(DNode* targetNode);
 };
 
 

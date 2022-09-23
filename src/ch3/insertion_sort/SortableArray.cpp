@@ -27,7 +27,8 @@ int SortableArray::shiftElemsGreaterThan(int pivotIdx, char cur) {
         leftIdx--;
     }
 
-    return leftIdx + 1;
+    int targetIdx = leftIdx + 1;
+    return targetIdx;
 }
 
 void SortableArray::add(char data) {

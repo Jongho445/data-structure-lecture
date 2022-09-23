@@ -14,15 +14,19 @@ bool StringLinkedList::isEmpty() const {
 
 void StringLinkedList::addFront(const string& elem) {
     StringNode* newNode = new StringNode;
+
     newNode->elem = elem;
     newNode->next = head;
+
     head = newNode;
 }
 
 void StringLinkedList::removeFront() {
-    StringNode* old = head;
-    head = old->next;
-    delete old;
+    StringNode* targetNode = head;
+
+    head = targetNode->next;
+
+    delete targetNode;
 }
 
 // DIY

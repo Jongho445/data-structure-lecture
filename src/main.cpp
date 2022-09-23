@@ -8,9 +8,9 @@
 
 int main() {
 //    ArrayTest::run();
-    InsertionSortTest::run();
+//    InsertionSortTest::run();
 //    SinglyLinkedListTest::run();
-//    DoublyLinkedListTest::run();
+    DoublyLinkedListTest::run();
 //    CircularlyLinkedListTest::run();
 
     return EXIT_SUCCESS;

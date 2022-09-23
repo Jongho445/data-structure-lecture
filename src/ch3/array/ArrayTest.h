@@ -22,7 +22,7 @@ public:
 
         cout << scores.toString() << endl;
 
-        // when removing scores[1] elem
+        // when: remove scores[1]
         scores.remove(1);
 
         // then

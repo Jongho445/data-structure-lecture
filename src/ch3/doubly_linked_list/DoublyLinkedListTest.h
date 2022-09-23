@@ -10,6 +10,7 @@ using namespace std;
 class DoublyLinkedListTest {
 public:
     static void run() {
+        // given
         DLinkedList list = DLinkedList();
 
         list.addFront("a");
@@ -19,7 +20,7 @@ public:
 
         cout << list.toString() << endl;
 
-        // when removing front elem 2 times
+        // when: remove front elem 2 times
         list.removeFront();
         list.removeFront();
 

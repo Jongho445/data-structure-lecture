@@ -3,7 +3,9 @@
 CircleList::CircleList(): cursor(nullptr) { }
 
 CircleList::~CircleList() {
-    while (!empty()) remove();
+    while (!empty()) {
+        remove();
+    }
 }
 
 bool CircleList::empty() const {
@@ -20,23 +22,25 @@ void CircleList::add(const Elem& elem) {
 
     if (cursor == nullptr) {
         newNode->next = newNode;
+
         cursor = newNode;
     } else {
         newNode->next = cursor->next;
+
         cursor->next = newNode;
     }
 }
 
 void CircleList::remove() {
-    CNode *removedNode = cursor->next;
+    CNode *targetNode = cursor->next;
 
-    if (removedNode == cursor) {
+    if (targetNode == cursor) {
         cursor = nullptr;
     } else {
-        cursor->next = removedNode->next;
+        cursor->next = targetNode->next;
     }
 
-    delete removedNode;
+    delete targetNode;
 }
 
 string CircleList::toString() {
