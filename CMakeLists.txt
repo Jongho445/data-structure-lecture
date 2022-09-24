@@ -10,5 +10,6 @@ add_executable(
         src/ch3/singly_linked_list/SinglyLinkedListTest.h src/ch3/singly_linked_list/StringLinkedList.cpp src/ch3/singly_linked_list/StringLinkedList.h src/ch3/singly_linked_list/StringNode.h
         src/ch3/doubly_linked_list/DNode.h src/ch3/doubly_linked_list/DLinkedList.cpp src/ch3/doubly_linked_list/DLinkedList.h src/ch3/doubly_linked_list/DoublyLinkedListTest.h src/ch3/doubly_linked_list/Dnode.cpp
         src/ch3/circularly_linked_list/CNode.cpp src/ch3/circularly_linked_list/CNode.h src/ch3/circularly_linked_list/CircleList.cpp src/ch3/circularly_linked_list/CircleList.h src/ch3/circularly_linked_list/CircularlyLinkedListTest.h
-)
+        src/ch4/exception/StackEmpty.h src/ch4/exception/StackFull.h
+        src/ch4/array_stack/ArrayStackTest.h src/ch4/array_stack/ArrayStack.h)
 
