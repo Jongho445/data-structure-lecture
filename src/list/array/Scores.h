@@ -4,7 +4,7 @@
 
 #include "string"
 #include "GameEntry.h"
-#include "exception/IndexOutOfBounds.h"
+#include "../../exception/IndexOutOfBounds.h"
 
 using namespace std;
 

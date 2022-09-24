@@ -1,12 +1,12 @@
 #include "cstdlib"
 
-#include "ch3/array/ArrayTest.h"
-#include "ch3/insertion_sort/InsertionSortTest.h"
-#include "ch3/singly_linked_list/SinglyLinkedListTest.h"
-#include "ch3/doubly_linked_list/DoublyLinkedListTest.h"
-#include "ch3/circularly_linked_list/CircularlyLinkedListTest.h"
+#include "list/array/ArrayTest.h"
+#include "sort/insertion_sort/InsertionSortTest.h"
+#include "list/singly_linked_list/SinglyLinkedListTest.h"
+#include "list/doubly_linked_list/DoublyLinkedListTest.h"
+#include "list/circularly_linked_list/CircularlyLinkedListTest.h"
 
-#include "ch4/array_stack/ArrayStackTest.h"
+#include "stack/array_stack/ArrayStackTest.h"
 
 int main() {
 //    ArrayTest::run();
