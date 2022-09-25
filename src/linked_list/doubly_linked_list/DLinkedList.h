@@ -11,8 +11,8 @@ public:
 
     bool empty() const;
 
-    void addFront(const Elem& elem);
-    void addBack(const Elem& elem);
+    void addFront(const Elem &elem);
+    void addBack(const Elem &elem);
     void removeFront();
     void removeBack();
 
@@ -23,8 +23,8 @@ private:
 
     friend class DoublyLinkedListTest;
 protected:
-    void add(DNode* targetNode, const Elem& elem);
-    void remove(DNode* targetNode);
+    void add(DNode *nextNode, const Elem &elem);
+    void remove(DNode *targetNode);
 };
 
 

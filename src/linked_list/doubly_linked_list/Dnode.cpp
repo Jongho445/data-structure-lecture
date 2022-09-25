@@ -2,6 +2,13 @@
 
 DNode::DNode(): prev(nullptr), next(nullptr) {}
 
+DNode::DNode(Elem elem, DNode *prev, DNode *next) {
+    this->elem = elem;
+
+    this->prev = prev;
+    this->next = next;
+}
+
 string DNode::toString() {
     if (isHeader()) {
         return "{ HEADER }";

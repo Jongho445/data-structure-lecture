@@ -13,18 +13,19 @@ class NodeList {
 public:
     class Iterator {
     public:
-        Elem& operator*();
+        Elem &operator*();
 
-        bool operator==(const Iterator& p) const;
-        bool operator!=(const Iterator& p) const;
+        bool operator==(const Iterator& targetIter) const;
+        bool operator!=(const Iterator& targetIter) const;
 
-        Iterator& operator++();
-        Iterator& operator--();
+        Iterator &operator++();
+        Iterator &operator--();
 
         friend class NodeList;
     private:
-        Iterator(Node* u);
-        Node* v;
+        Iterator(Node *initNode);
+
+        Node *curNode;
     };
 
     NodeList();
@@ -35,18 +36,19 @@ public:
     Iterator begin() const;
     Iterator end() const;
 
-    void insertFront(const Elem& e);
-    void insertBack(const Elem& e);
-    void insert(const Iterator& p, const Elem& e);
+    void insertFront(const Elem& elem);
+    void insertBack(const Elem& elem);
+    void insert(const Iterator& targetIter, const Elem& elem);
 
     void eraseFront();
     void eraseBack();
-    void erase(const Iterator& p);
+    void erase(const Iterator& targetIter);
 
 private:
-    int n;
-    Node* header;
-    Node* trailer;
+    int length;
+
+    Node *header;
+    Node *trailer;
 };
 
 

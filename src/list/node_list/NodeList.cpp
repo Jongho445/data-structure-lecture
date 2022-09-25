@@ -1,21 +1,21 @@
 #include "NodeList.h"
 
 NodeList::NodeList() {
-    header = new Node;
-    trailer = new Node;
+    header = new Node();
+    trailer = new Node();
 
     header->next = trailer;
     trailer->prev = header;
 
-    n = 0;
+    length = 0;
 }
 
 int NodeList::size() const {
-    return n;
+    return length;
 }
 
 bool NodeList::empty() const {
-    return (n == 0);
+    return length == 0;
 }
 
 NodeList::Iterator NodeList::begin() const {
@@ -26,31 +26,38 @@ NodeList::Iterator NodeList::end() const {
     return Iterator(trailer);
 }
 
-void NodeList::insert(const NodeList::Iterator& p, const Elem& e) {
-    Node* w = p.v; // p’s node
-    Node* u = w->prev; // p’s predecessor
-    Node* v = new Node; // new node to insert
-    v->elem = e;
-    v->next = w; w->prev = v; // link in v before w
-    v->prev = u; u->next = v; // link in v after u
-    n++;
+void NodeList::insert(const NodeList::Iterator& targetIter, const Elem& elem) {
+    Node *nextNode = targetIter.curNode;
+    Node *prevNode = nextNode->prev;
+
+    Node *newNode = new Node(elem, prevNode, nextNode);
+
+    nextNode->prev = newNode;
+    prevNode->next = newNode;
+
+    length++;
 }
 
-void NodeList::insertFront(const Elem& e) {
-    insert(begin(), e);
+void NodeList::insertFront(const Elem& elem) {
+    insert(begin(), elem);
 }
 
-void NodeList::insertBack(const Elem& e) {
-    insert(end(), e);
+void NodeList::insertBack(const Elem& elem) {
+    insert(end(), elem);
 }
 
-void NodeList::erase(const Iterator& p) {
-    Node* v = p.v; // node to remove
-    Node* w = v->next; // successor
-    Node* u = v->prev; // predecessor
-    u->next = w; w->prev = u; // unlink p
-    delete v; // delete this node
-    n--; // one fewer element
+void NodeList::erase(const Iterator& targetIter) {
+    Node *targetNode = targetIter.curNode;
+
+    Node *nextNode = targetNode->next;
+    Node *prevNode = targetNode->prev;
+
+    prevNode->next = nextNode;
+    nextNode->prev = prevNode;
+
+    delete targetNode;
+
+    length--;
 }
 
 void NodeList::eraseFront() {

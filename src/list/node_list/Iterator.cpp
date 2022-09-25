@@ -1,25 +1,29 @@
 #include "NodeList.h"
 
-NodeList::Iterator::Iterator(Node* u) {
-    v = u;
+NodeList::Iterator::Iterator(Node* initNode) {
+    curNode = initNode;
 }
 
 Elem& NodeList::Iterator::operator*() {
-    return v->elem;
+    return curNode->elem;
 }
 
-bool NodeList::Iterator::operator==(const Iterator& p) const {
-    return v == p.v;
+bool NodeList::Iterator::operator==(const Iterator& targetIter) const {
+    return curNode == targetIter.curNode;
 }
 
-bool NodeList::Iterator::operator!=(const Iterator& p) const {
-    return v != p.v;
+bool NodeList::Iterator::operator!=(const Iterator& targetIter) const {
+    return curNode != targetIter.curNode;
 }
 
 NodeList::Iterator& NodeList::Iterator::operator++() {
-    v = v->next; return *this;
+    curNode = curNode->next;
+
+    return *this;
 }
 
 NodeList::Iterator& NodeList::Iterator::operator--() {
-    v = v->prev; return *this;
+    curNode = curNode->prev;
+
+    return *this;
 }

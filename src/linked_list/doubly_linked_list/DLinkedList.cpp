@@ -1,8 +1,8 @@
 #include "DLinkedList.h"
 
 DLinkedList::DLinkedList() {
-    header = new DNode;
-    trailer = new DNode;
+    header = new DNode();
+    trailer = new DNode();
 
     header->next = trailer;
     trailer->prev = header;
@@ -21,28 +21,26 @@ bool DLinkedList::empty() const {
     return header->next == trailer;
 }
 
-void DLinkedList::add(DNode* targetNode, const Elem& elem) {
-    DNode *newNode = new DNode;
-    newNode->elem = elem;
+void DLinkedList::add(DNode *nextNode, const Elem &elem) {
+    DNode *prevNode = nextNode->prev;
 
-    newNode->next = targetNode;
-    newNode->prev = targetNode->prev;
+    DNode *newNode = new DNode(elem, prevNode, nextNode);
 
-    targetNode->prev->next = newNode;
-    targetNode->prev = newNode;
+    nextNode->prev = newNode;
+    prevNode->next = newNode;
 }
 
-void DLinkedList::addFront(const Elem& elem){
+void DLinkedList::addFront(const Elem &elem){
     add(header->next, elem);
 }
 
-void DLinkedList::addBack(const Elem& elem){
+void DLinkedList::addBack(const Elem &elem){
     add(trailer, elem);
 }
 
-void DLinkedList::remove(DNode* targetNode) {
-    DNode* prevNode = targetNode->prev;
-    DNode* nextNode = targetNode->next;
+void DLinkedList::remove(DNode *targetNode) {
+    DNode *prevNode = targetNode->prev;
+    DNode *nextNode = targetNode->next;
 
     prevNode->next = nextNode;
     nextNode->prev = prevNode;
@@ -66,7 +64,7 @@ string DLinkedList::toString() {
         result += curNode->toString();
 
         if (curNode->next != nullptr) {
-            result += " <-> ";
+            result += ", ";
         } else {
             result += " ]";
         }

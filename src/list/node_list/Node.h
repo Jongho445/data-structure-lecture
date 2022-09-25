@@ -10,6 +10,8 @@ typedef string Elem;
 
 class Node {
 public:
+    Node();
+    Node(Elem elem, Node *prev, Node *next);
     string toString();
 private:
     Elem elem;
