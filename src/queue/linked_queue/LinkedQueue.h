@@ -4,7 +4,7 @@
 
 #include "string"
 #include "../../exception/QueueEmpty.h"
-#include "../../list/circularly_linked_list/CircleList.h"
+#include "../../linked_list/circularly_linked_list/CircleList.h"
 
 using namespace std;
 

@@ -4,7 +4,7 @@
 
 #include "string"
 #include "../../exception/StackEmpty.h"
-#include "../../list/singly_linked_list/SLinkedList.h"
+#include "../../linked_list/singly_linked_list/SLinkedList.h"
 
 using namespace std;
 

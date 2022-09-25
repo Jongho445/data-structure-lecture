@@ -1,5 +1,5 @@
-#ifndef DATA_STRUCTURE_LECTURE_ARRAYTEST_H
-#define DATA_STRUCTURE_LECTURE_ARRAYTEST_H
+#ifndef DATA_STRUCTURE_LECTURE_GAMESCORESTEST_H
+#define DATA_STRUCTURE_LECTURE_GAMESCORESTEST_H
 
 
 #include "Scores.h"
@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class ArrayTest {
+class GameScoresTest {
 public:
     static void run() {
         // given
@@ -31,4 +31,4 @@ public:
 };
 
 
-#endif //DATA_STRUCTURE_LECTURE_ARRAYTEST_H
+#endif //DATA_STRUCTURE_LECTURE_GAMESCORESTEST_H

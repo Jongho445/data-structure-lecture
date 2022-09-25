@@ -13,7 +13,7 @@ bool LinkedQueue::empty() const {
 const Elem& LinkedQueue::front() const throw(QueueEmpty) {
     if (empty())
         throw QueueEmpty("front of empty queue");
-    return C.front(); // list front is queue front
+    return C.front(); // linked_list front is queue front
 }
 
 void LinkedQueue::enqueue(const Elem& e) {
@@ -25,6 +25,6 @@ void LinkedQueue::enqueue(const Elem& e) {
 void LinkedQueue::dequeue() throw(QueueEmpty) {
     if (empty())
         throw QueueEmpty("dequeue of empty queue");
-    C.remove(); // remove from list front
+    C.remove(); // remove from linked_list front
     n--;
 }
