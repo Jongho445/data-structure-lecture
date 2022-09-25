@@ -2,10 +2,11 @@
 
 Node::Node(): elem(""), prev(nullptr), next(nullptr) {}
 
-Node::Node(Elem elem, Node *prev, Node *next) {
-    this->elem = elem;
-    this->prev = prev;
-    this->next = next;
+Node::Node(Elem value, Node *prevNode, Node *nextNode) {
+    elem = value;
+
+    prev = prevNode;
+    next = nextNode;
 };
 
 string Node::toString() {

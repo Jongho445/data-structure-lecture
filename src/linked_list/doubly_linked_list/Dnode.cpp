@@ -2,11 +2,11 @@
 
 DNode::DNode(): prev(nullptr), next(nullptr) {}
 
-DNode::DNode(Elem elem, DNode *prev, DNode *next) {
-    this->elem = elem;
+DNode::DNode(Elem value, DNode *prevNode, DNode *nextNode) {
+    elem = value;
 
-    this->prev = prev;
-    this->next = next;
+    prev = prevNode;
+    next = nextNode;
 }
 
 string DNode::toString() {

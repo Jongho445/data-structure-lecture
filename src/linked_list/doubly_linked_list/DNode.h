@@ -11,7 +11,7 @@ typedef string Elem;
 class DNode {
 public:
     DNode();
-    DNode(Elem elem, DNode *prev, DNode *next);
+    DNode(Elem value, DNode *prevNode, DNode *nextNode);
 
     string toString();
     string toString(DNode *node);

@@ -11,7 +11,7 @@ typedef string Elem;
 class Node {
 public:
     Node();
-    Node(Elem elem, Node *prev, Node *next);
+    Node(Elem value, Node *prevNode, Node *nextNode);
     string toString();
 private:
     Elem elem;
