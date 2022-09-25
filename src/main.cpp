@@ -12,6 +12,9 @@
 #include "stack/linked_stack/LinkedStackTest.h"
 #include "queue/linked_queue/LinkedQueueTest.h"
 
+#include "list/array_vector/ArrayVectorTest.h"
+#include "list/node_list/NodeListTest.h"
+
 int main() {
 //    GameScoresTest::run();
 //    InsertionSortTest::run();
@@ -24,6 +27,9 @@ int main() {
 //    ArrayStackTest::run();
 //    LinkedStackTest::run();
 //    LinkedQueueTest::run();
+
+//    ArrayVectorTest::run();
+//    NodeListTest::run();
 
     return EXIT_SUCCESS;
 }
