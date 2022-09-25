@@ -2,7 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_SINGLYLINKEDLISTTEST_H
 
 
-#include "StringLinkedList.h"
+#include "SLinkedList.h"
 #include "iostream"
 
 using namespace std;
@@ -10,7 +10,7 @@ using namespace std;
 class SinglyLinkedListTest {
 public:
     static void run() {
-        StringLinkedList list = StringLinkedList();
+        SLinkedList<string> list = SLinkedList<string>();
 
         // add elem to the front, 4 times
         list.addFront("cat");

@@ -9,7 +9,7 @@ public:
     DLinkedList();
     ~DLinkedList();
 
-    bool isEmpty() const;
+    bool empty() const;
 
     void addFront(const Elem& elem);
     void addBack(const Elem& elem);

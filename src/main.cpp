@@ -7,6 +7,8 @@
 #include "list/circularly_linked_list/CircularlyLinkedListTest.h"
 
 #include "stack/array_stack/ArrayStackTest.h"
+#include "stack/linked_stack/LinkedStackTest.h"
+#include "queue/linked_queue/LinkedQueueTest.h"
 
 int main() {
 //    ArrayTest::run();
@@ -16,6 +18,8 @@ int main() {
 //    CircularlyLinkedListTest::run();
 
 //    ArrayStackTest::run();
+//    LinkedStackTest::run();
+//    LinkedQueueTest::run();
 
     return EXIT_SUCCESS;
 }

@@ -9,7 +9,7 @@ DLinkedList::DLinkedList() {
 }
 
 DLinkedList::~DLinkedList() {
-    while (!isEmpty()) {
+    while (!empty()) {
         removeFront();
     }
 
@@ -17,7 +17,7 @@ DLinkedList::~DLinkedList() {
     delete trailer;
 }
 
-bool DLinkedList::isEmpty() const {
+bool DLinkedList::empty() const {
     return header->next == trailer;
 }
 

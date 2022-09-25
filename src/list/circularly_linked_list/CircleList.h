@@ -9,6 +9,9 @@ public:
     CircleList();
     ~CircleList();
 
+    const Elem& front() const;
+    const Elem& back() const;
+
     bool empty() const;
 
     void advance();
