@@ -2,6 +2,7 @@
 
 #include "algorithm/game_scores/GameScoresTest.h"
 #include "algorithm/insertion_sort/InsertionSortTest.h"
+#include "algorithm/ruler_drawer/RulerDrawerTest.h"
 
 #include "linked_list/singly_linked_list/SinglyLinkedListTest.h"
 #include "linked_list/doubly_linked_list/DoublyLinkedListTest.h"
@@ -14,6 +15,7 @@
 int main() {
 //    GameScoresTest::run();
 //    InsertionSortTest::run();
+//    RulerDrawerTest::run();
 
 //    SinglyLinkedListTest::run();
     DoublyLinkedListTest::run();

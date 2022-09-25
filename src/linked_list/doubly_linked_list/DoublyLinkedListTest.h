@@ -18,22 +18,19 @@ public:
         list.addFront("3rd");
         list.addFront("4th");
 
-        cout << list.toString() << endl;
-        cout << endl;
+        cout << "\n" + list.toString() + "\n" << endl;
 
         // remove front elem, 2 times
         list.removeFront();
         list.removeFront();
 
-        cout << list.toString() << endl;
-        cout << endl;
+        cout << list.toString() + "\n" << endl;
 
         // add "5th elem" between "2nd elem" and "1st elem"
         DNode *targetNode = list.header->next->next;
         list.add(targetNode, "5th");
 
-        cout << list.toString() << endl;
-        cout << endl;
+        cout << list.toString() + "\n" << endl;
     }
 };
 

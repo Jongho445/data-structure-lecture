@@ -13,5 +13,7 @@ add_executable(
         src/exception/StackEmpty.h src/exception/StackFull.h
         src/stack/array_stack/ArrayStackTest.h src/stack/array_stack/ArrayStack.h
         src/stack/linked_stack/LinkedStack.cpp src/stack/linked_stack/LinkedStack.h src/stack/linked_stack/LinkedStackTest.h
-        src/queue/linked_queue/LinkedQueue.cpp src/queue/linked_queue/LinkedQueue.h src/exception/QueueEmpty.h src/queue/linked_queue/LinkedQueueTest.h)
+        src/queue/linked_queue/LinkedQueue.cpp src/queue/linked_queue/LinkedQueue.h src/exception/QueueEmpty.h src/queue/linked_queue/LinkedQueueTest.h
+        src/algorithm/ruler_drawer/RulerDrawer.cpp src/algorithm/ruler_drawer/RulerDrawer.h src/algorithm/ruler_drawer/RulerDrawerTest.h
+)
 
