@@ -51,16 +51,16 @@ void CircleList::remove() {
 }
 
 string CircleList::toString() {
-    string result = "[ -> ";
+    string result = "[ ";
     CNode *curNode = cursor->next;
 
     while(true) {
         result += curNode->toString();
 
         if (curNode != cursor) {
-            result += " -> ";
+            result += ", ";
         } else {
-            result += "* -> ]";
+            result += "* ]";
         }
 
         if (curNode == cursor) {
@@ -74,7 +74,7 @@ string CircleList::toString() {
 }
 
 string CircleList::toStringStartsWithCursor() {
-    string result = "[ -> ";
+    string result = "[ ";
     CNode *curNode = cursor;
 
     do {
@@ -82,12 +82,12 @@ string CircleList::toStringStartsWithCursor() {
 
         if (curNode->next != cursor) {
             if (curNode == cursor) {
-                result += "* -> ";
+                result += "*, ";
             } else {
-                result += " -> ";
+                result += ", ";
             }
         } else {
-            result += " -> ]";
+            result += " ]";
         }
 
         curNode = curNode->next;

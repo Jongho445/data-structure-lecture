@@ -21,8 +21,8 @@ int main() {
 //    RulerDrawerTest::run();
 
 //    SinglyLinkedListTest::run();
-    DoublyLinkedListTest::run();
-//    CircularlyLinkedListTest::run();
+//    DoublyLinkedListTest::run();
+    CircularlyLinkedListTest::run();
 
 //    ArrayStackTest::run();
 //    LinkedStackTest::run();

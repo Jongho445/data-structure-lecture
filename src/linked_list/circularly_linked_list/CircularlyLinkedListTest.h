@@ -12,19 +12,21 @@ public:
         CircleList playList; // []
 
         playList.add("Stayin Alive"); // [Stayin Alive*]
-        playList.add("Le Freak"); // [Le Freak, Stayin Alive*]
-        playList.add("Jive Talkin"); // [Jive Talkin, Le Freak, Stayin Alive*]
         cout << playList.toString() << endl;
+        playList.add("Le Freak"); // [Le Freak, Stayin Alive*]
+        cout << playList.toString() << endl;
+        playList.add("Jive Talkin"); // [Jive Talkin, Le Freak, Stayin Alive*]
+        cout << playList.toString() + "\n" << endl;
 
         playList.advance(); // [Le Freak, Stayin Alive, Jive Talkin*]
         playList.advance(); // [Stayin Alive, Jive Talkin, Le Freak*]
-        cout << playList.toString() << endl;
+        cout << playList.toString() + "\n" << endl;
 
         playList.remove(); // [Jive Talkin, Le Freak*]
-        cout << playList.toString() << endl;
+        cout << playList.toString() + "\n" << endl;
 
         playList.add("Disco Inferno"); // [Disco Inferno, Jive Talkin, Le Freak*]
-        cout << playList.toString() << endl;
+        cout << playList.toString() + "\n" << endl;
     }
 };
 
