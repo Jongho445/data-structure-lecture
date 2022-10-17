@@ -21,6 +21,8 @@ public:
 
     void enqueue(const Elem& e);
     void dequeue() throw(QueueEmpty);
+
+    string toString();
 private:
     CircleList C;
     int n;

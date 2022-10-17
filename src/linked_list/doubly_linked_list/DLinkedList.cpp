@@ -21,6 +21,14 @@ bool DLinkedList::empty() const {
     return header->next == trailer;
 }
 
+const Elem& DLinkedList::front() const {
+    return header->next->elem;
+}
+
+const Elem& DLinkedList::back() const {
+    return trailer->prev->elem;
+}
+
 void DLinkedList::add(DNode *nextNode, const Elem &elem) {
     DNode *prevNode = nextNode->prev;
 
@@ -57,11 +65,42 @@ void DLinkedList::removeBack() {
 }
 
 string DLinkedList::toString() {
+    string result = "[\n";
+    DNode *curNode = header;
+
+    while (curNode != nullptr) {
+        string elem = curNode->toString();
+
+        if (elem == "{ HEADER }") {
+            curNode = curNode->next;
+            continue;
+        }
+
+        if (elem == "{ TRAILER }") {
+            result += "\n]";
+            break;
+        }
+
+        result += "    ";
+        result += elem;
+
+        if (curNode->next->toString() != "{ TRAILER }") {
+            result += ",\n";
+        }
+
+        curNode = curNode->next;
+    }
+
+    return result;
+}
+
+string DLinkedList::toStringInclusiveOfHeadOrTail() {
     string result = "[ ";
     DNode *curNode = header;
 
     while (curNode != nullptr) {
-        result += curNode->toString();
+        string elem = curNode->toString();
+        result += elem;
 
         if (curNode->next != nullptr) {
             result += ", ";

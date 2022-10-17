@@ -18,6 +18,9 @@ string DNode::toString() {
         return "{ prev: " + toString(prev)
                + ", elem: \"" + elem
                + "\", next: " + toString(next) + " }";
+//        return "{ elem: \"" + elem
+//                + ", prev: " + toString(prev)
+//                + "\", next: " + toString(next) + " }";
     }
 }
 

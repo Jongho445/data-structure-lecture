@@ -11,12 +11,16 @@ public:
 
     bool empty() const;
 
+    const Elem& front() const;
+    const Elem& back() const;
+
     void addFront(const Elem &elem);
     void addBack(const Elem &elem);
     void removeFront();
     void removeBack();
 
     string toString();
+    string toStringInclusiveOfHeadOrTail();
 private:
     DNode* header;
     DNode* trailer;

@@ -11,6 +11,8 @@
 #include "stack/array_stack/ArrayStackTest.h"
 #include "stack/linked_stack/LinkedStackTest.h"
 #include "queue/linked_queue/LinkedQueueTest.h"
+#include "queue/linked_deque/LinkedDequeTest.h"
+#include "stack/deque_stack/DequeStackTest.h"
 
 #include "list/array_vector/ArrayVectorTest.h"
 #include "list/node_list/NodeListTest.h"
@@ -22,11 +24,13 @@ int main() {
 
 //    SinglyLinkedListTest::run();
 //    DoublyLinkedListTest::run();
-    CircularlyLinkedListTest::run();
+//    CircularlyLinkedListTest::run();
 
 //    ArrayStackTest::run();
 //    LinkedStackTest::run();
 //    LinkedQueueTest::run();
+    LinkedDequeTest::run();
+//    DequeStackTest::run();
 
 //    ArrayVectorTest::run();
 //    NodeListTest::run();

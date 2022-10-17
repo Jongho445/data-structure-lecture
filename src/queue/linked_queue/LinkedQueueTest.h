@@ -12,14 +12,17 @@ public:
     static void run() {
         LinkedQueue queue = LinkedQueue();
 
-        queue.enqueue("hello");
-        cout << queue.front() << endl;
+        queue.enqueue("1st");
+        cout << queue.toString() << endl;
 
-        queue.enqueue("haha");
-        cout << queue.front() << endl;
+        queue.enqueue("2nd");
+        cout << queue.toString() << endl;
+
+        queue.enqueue("3rd");
+        cout << queue.toString() << endl;
 
         queue.dequeue();
-        cout << queue.front() << endl;
+        cout << queue.toString() << endl;
     }
 };
 

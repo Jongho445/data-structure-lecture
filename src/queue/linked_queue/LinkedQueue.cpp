@@ -13,18 +13,22 @@ bool LinkedQueue::empty() const {
 const Elem& LinkedQueue::front() const throw(QueueEmpty) {
     if (empty())
         throw QueueEmpty("front of empty queue");
-    return C.front(); // linked_list front is queue front
+    return C.front();
 }
 
 void LinkedQueue::enqueue(const Elem& e) {
-    C.add(e); // insert after cursor
-    C.advance(); // ...and advance
+    C.add(e);
+    C.advance();
     n++;
 }
-// dequeue element at front
+
 void LinkedQueue::dequeue() throw(QueueEmpty) {
     if (empty())
         throw QueueEmpty("dequeue of empty queue");
-    C.remove(); // remove from linked_list front
+    C.remove();
     n--;
+}
+
+string LinkedQueue::toString() {
+    return C.toString();
 }
