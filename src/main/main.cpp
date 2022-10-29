@@ -19,23 +19,23 @@
 #include "adt/node_list/NodeListTest.h"
 
 int main() {
-//    GameScoresTest::run();
-//    InsertionSortTest::run();
-//    RulerDrawerTest::run();
-//
-//    SinglyLinkedListTest::run();
-//    DoublyLinkedListTest::run();
-//    CircularlyLinkedListTest::run();
-//
-//    ArrayStackTest::run();
-//    LinkedStackTest::run();
+    GameScoresTest::run();
+    InsertionSortTest::run();
+    RulerDrawerTest::run();
+
+    SinglyLinkedListTest::run();
+    DoublyLinkedListTest::run();
+    CircularlyLinkedListTest::run();
+
+    ArrayStackTest::run();
+    LinkedStackTest::run();
     ArrayQueueTest::run();
-//    LinkedQueueTest::run();
-//    LinkedDequeTest::run();
-//    DequeStackTest::run();
-//
-//    ArrayVectorTest::run();
-//    NodeListTest::run();
+    LinkedQueueTest::run();
+    LinkedDequeTest::run();
+    DequeStackTest::run();
+
+    ArrayVectorTest::run();
+    NodeListTest::run();
 
     return EXIT_SUCCESS;
 }
