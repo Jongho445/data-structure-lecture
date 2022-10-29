@@ -2,7 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_LINKEDSTACKTEST_H
 
 #include "iostream"
-#include "../../main/stack/linked_stack/LinkedStack.h"
+#include "../../main/stack/LinkedStack.h"
 
 using namespace std;
 

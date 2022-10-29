@@ -1,6 +1,6 @@
 #include "NodeList.h"
 
-NodeList::Iterator::Iterator(Node* initNode) {
+NodeList::Iterator::Iterator(DNode* initNode) {
     curNode = initNode;
 }
 

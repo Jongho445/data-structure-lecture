@@ -2,7 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_ARRAYSTACKTEST_H
 
 #include "iostream"
-#include "../../main/stack/array_stack/ArrayStack.h"
+#include "../../main/stack/ArrayStack.h"
 
 using namespace std;
 

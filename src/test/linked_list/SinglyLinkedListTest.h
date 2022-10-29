@@ -2,7 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_SINGLYLINKEDLISTTEST_H
 
 
-#include "../../main/linked_list/singly_linked_list/SLinkedList.h"
+#include "../../main/linked_list/SLinkedList.h"
 #include "iostream"
 
 using namespace std;

@@ -1,8 +1,8 @@
 #include "NodeList.h"
 
 NodeList::NodeList() {
-    header = new Node();
-    trailer = new Node();
+    header = new DNode();
+    trailer = new DNode();
 
     header->next = trailer;
     trailer->prev = header;
@@ -27,10 +27,10 @@ NodeList::Iterator NodeList::end() const {
 }
 
 void NodeList::insert(const NodeList::Iterator& targetIter, const Elem& elem) {
-    Node *nextNode = targetIter.curNode;
-    Node *prevNode = nextNode->prev;
+    DNode *nextNode = targetIter.curNode;
+    DNode *prevNode = nextNode->prev;
 
-    Node *newNode = new Node(elem, prevNode, nextNode);
+    DNode *newNode = new DNode(elem, prevNode, nextNode);
 
     nextNode->prev = newNode;
     prevNode->next = newNode;
@@ -47,10 +47,10 @@ void NodeList::insertBack(const Elem& elem) {
 }
 
 void NodeList::erase(const Iterator& targetIter) {
-    Node *targetNode = targetIter.curNode;
+    DNode *targetNode = targetIter.curNode;
 
-    Node *nextNode = targetNode->next;
-    Node *prevNode = targetNode->prev;
+    DNode *nextNode = targetNode->next;
+    DNode *prevNode = targetNode->prev;
 
     prevNode->next = nextNode;
     nextNode->prev = prevNode;

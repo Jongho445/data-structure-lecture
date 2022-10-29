@@ -3,7 +3,7 @@
 
 
 #include "iostream"
-#include "../../main/stack/deque_stack/DequeStack.h"
+#include "../../main/stack/DequeStack.h"
 
 using namespace std;
 

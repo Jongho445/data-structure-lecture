@@ -3,7 +3,7 @@
 
 
 #include "string"
-#include "Node.h"
+#include "../../linked_list/node/DNode.h"
 
 using namespace std;
 
@@ -23,9 +23,9 @@ public:
 
         friend class NodeList;
     private:
-        Iterator(Node *initNode);
+        Iterator(DNode *initNode);
 
-        Node *curNode;
+        DNode *curNode;
     };
 
     NodeList();
@@ -47,8 +47,8 @@ public:
 private:
     int length;
 
-    Node *header;
-    Node *trailer;
+    DNode *header;
+    DNode *trailer;
 };
 
 

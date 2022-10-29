@@ -3,7 +3,7 @@
 
 
 #include "iostream"
-#include "../../main/linked_list/doubly_linked_list/DLinkedList.h"
+#include "../../main/linked_list/DLinkedList.h"
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_CIRCULARLYLINKEDLISTTEST_H
 
 #include "iostream"
-#include "../../main/linked_list/circularly_linked_list/CircleList.h"
+#include "../../main/linked_list/CircleList.h"
 
 using namespace std;
 

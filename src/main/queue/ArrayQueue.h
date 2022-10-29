@@ -2,9 +2,9 @@
 #define DATA_STRUCTURE_LECTURE_ARRAYQUEUE_H
 
 #include <string>
-#include "../../exception/QueueFull.h"
-#include "../../exception/QueueEmpty.h"
-#include "../../linked_list/circularly_linked_list/CircleList.h"
+#include "../exception/QueueFull.h"
+#include "../exception/QueueEmpty.h"
+#include "../linked_list/CircleList.h"
 
 using namespace std;
 

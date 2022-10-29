@@ -2,7 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_SLINKEDLIST_H
 
 
-#include "SNode.h"
+#include "node/SNode.h"
 
 template <typename E>
 class SLinkedList {

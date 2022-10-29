@@ -1,8 +1,8 @@
 #ifndef DATA_STRUCTURE_LECTURE_ARRAYSTACK_H
 #define DATA_STRUCTURE_LECTURE_ARRAYSTACK_H
 
-#include "../../exception/StackEmpty.h"
-#include "../../exception/StackFull.h"
+#include "../exception/StackEmpty.h"
+#include "../exception/StackFull.h"
 
 template <typename E>
 class ArrayStack {
