@@ -3,7 +3,7 @@
 
 
 #include "iostream"
-#include "LinkedQueue.h"
+#include "../../main/queue/linked_queue/LinkedQueue.h"
 
 using namespace std;
 

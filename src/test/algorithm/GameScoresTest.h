@@ -2,7 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_GAMESCORESTEST_H
 
 
-#include "Scores.h"
+#include "../../main/algorithm/game_scores/Scores.h"
 #include "iostream"
 
 using namespace std;

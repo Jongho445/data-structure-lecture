@@ -3,7 +3,7 @@
 
 
 #include "iostream"
-#include "ArrayQueue.h"
+#include "../../main/queue/array_queue/ArrayQueue.h"
 
 using namespace std;
 

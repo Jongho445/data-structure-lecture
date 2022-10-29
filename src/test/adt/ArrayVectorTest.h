@@ -3,7 +3,7 @@
 
 
 #include "iostream"
-#include "ArrayVector.h"
+#include "../../main/adt/array_vector/ArrayVector.h"
 
 using namespace std;
 

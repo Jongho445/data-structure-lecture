@@ -3,7 +3,7 @@
 
 
 #include "iostream"
-#include "LinkedDeque.h"
+#include "../../main/queue/linked_deque/LinkedDeque.h"
 
 using namespace std;
 
