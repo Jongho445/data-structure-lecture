@@ -13,8 +13,8 @@ const Elem& DequeStack::top() const throw(StackEmpty) {
     return deque.front();
 }
 
-void DequeStack::push(const Elem& e) {
-    deque.insertFront(e);
+void DequeStack::push(const Elem& elem) {
+    deque.insertFront(elem);
 }
 
 void DequeStack::pop() throw(StackEmpty) {

@@ -18,8 +18,8 @@ public:
     const Elem& front() const throw(DequeEmpty);
     const Elem& back() const throw(DequeEmpty);
 
-    void insertFront(const Elem& e);
-    void insertBack(const Elem& e);
+    void insertFront(const Elem& elem);
+    void insertBack(const Elem& elem);
     void removeFront() throw(DequeEmpty);
     void removeBack() throw(DequeEmpty);
 

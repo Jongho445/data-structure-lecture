@@ -7,21 +7,12 @@ CircleList::~CircleList() {
         remove();
     }
 }
-const Elem& CircleList::front() const {
-    return cursor->next->elem;
-}
 
-const Elem& CircleList::back() const {
-    return cursor->elem;
-}
+const Elem& CircleList::front() const { return cursor->next->elem; }
+const Elem& CircleList::back() const { return cursor->elem; }
+bool CircleList::empty() const { return cursor == nullptr; }
 
-bool CircleList::empty() const {
-    return cursor == nullptr;
-}
-
-void CircleList::advance() {
-    cursor = cursor->next;
-}
+void CircleList::advance() { cursor = cursor->next; }
 
 void CircleList::add(const Elem& elem) {
     CNode *newNode = new CNode;

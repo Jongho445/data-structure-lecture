@@ -15,11 +15,11 @@ public:
     LinkedQueue();
 
     int size() const;
-    const Elem& front() const throw(QueueEmpty);
-
     bool empty() const;
 
-    void enqueue(const Elem& e);
+    const Elem& front() const throw(QueueEmpty);
+
+    void enqueue(const Elem& elem);
     void dequeue() throw(QueueEmpty);
 
     string toString();

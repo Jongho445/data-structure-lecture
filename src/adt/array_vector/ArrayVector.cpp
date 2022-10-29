@@ -1,50 +1,44 @@
 #include "ArrayVector.h"
 
-ArrayVector::ArrayVector(): capacity(0), n(0), A(nullptr) { }
+ArrayVector::ArrayVector(): capacity(0), length(0), arr(nullptr) { }
 
-int ArrayVector::size() const {
-    return n;
-}
+int ArrayVector::size() const { return length; }
+bool ArrayVector::empty() const { return size() == 0; }
 
-bool ArrayVector::empty() const {
-    return size() == 0;
-}
-
-Elem& ArrayVector::operator[](int i) {
-    return A[i];
-}
+Elem& ArrayVector::operator[](int i) { return arr[i]; }
 
 Elem& ArrayVector::at(int i) throw(IndexOutOfBounds) {
-    if (i < 0 || i >= n) {
+    if (i < 0 || i >= length) {
         throw IndexOutOfBounds("illegal index in function at()");
     }
-    return A[i];
+
+    return arr[i];
 }
 
-void ArrayVector::erase(int i) {
-    for (int j = i+1; j < n; j++) {
-        A[j - 1] = A[j];
+void ArrayVector::erase(int idx) {
+    for (int j = idx + 1; j < length; j++) {
+        arr[j - 1] = arr[j];
     }
 
-    n--;
+    length--;
 }
 
-void ArrayVector::reserve(int N) {
-    if (capacity >= N) {
+void ArrayVector::reserve(int newCapacity) {
+    if (capacity >= newCapacity) {
         return;
     }
 
-    Elem* B = new Elem[N];
-    for (int j = 0; j < n; j++) {
-        B[j] = A[j];
+    Elem* newArr = new Elem[newCapacity];
+    for (int j = 0; j < length; j++) {
+        newArr[j] = arr[j];
     }
 
-    if (A != nullptr) {
-        delete [] A;
+    if (arr != nullptr) {
+        delete [] arr;
     }
 
-    A = B;
-    capacity = N;
+    arr = newArr;
+    capacity = newCapacity;
 }
 
 int max(int a, int b) {
@@ -55,17 +49,17 @@ int max(int a, int b) {
     }
 }
 
-void ArrayVector::insert(int i, const Elem& e) {
-    if (n >= capacity) {
+void ArrayVector::insert(int idx, const Elem& elem) {
+    if (length >= capacity) {
         reserve(max(1, 2 * capacity));
     }
 
-    for (int j = n - 1; j >= i; j--) {
-        A[j+1] = A[j];
+    for (int j = length - 1; j >= idx; j--) {
+        arr[j + 1] = arr[j];
     }
 
-    A[i] = e; // put in empty slot
-    n++; // one more element
+    arr[idx] = elem; // put in empty slot
+    length++; // one more element
 }
 
 

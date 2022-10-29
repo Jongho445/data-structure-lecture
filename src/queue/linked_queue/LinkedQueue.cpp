@@ -13,8 +13,8 @@ const Elem& LinkedQueue::front() const throw(QueueEmpty) {
     return linkedList.front();
 }
 
-void LinkedQueue::enqueue(const Elem& e) {
-    linkedList.add(e);
+void LinkedQueue::enqueue(const Elem& elem) {
+    linkedList.add(elem);
     linkedList.advance();
     length++;
 }

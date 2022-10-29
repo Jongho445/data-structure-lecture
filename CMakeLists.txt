@@ -19,5 +19,6 @@ add_executable(
         src/adt/node_list/NodeList.cpp src/adt/node_list/NodeList.h src/adt/node_list/Node.cpp src/adt/node_list/Node.h src/adt/node_list/Iterator.cpp src/adt/node_list/NodeListTest.h
         src/queue/linked_deque/LinkedDeque.cpp src/queue/linked_deque/LinkedDeque.h src/queue/linked_deque/LinkedDequeTest.h src/exception/DequeEmpty.h
         src/stack/deque_stack/DequeStack.cpp src/stack/deque_stack/DequeStack.h src/stack/deque_stack/DequeStackTest.h
+        src/queue/array_queue/ArrayQueue.h src/exception/QueueFull.h src/queue/array_queue/ArrayQueueTest.h
 )
 

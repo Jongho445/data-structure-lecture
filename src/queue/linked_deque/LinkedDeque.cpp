@@ -9,13 +9,13 @@ bool LinkedDeque::empty() const { return linkedList.empty(); }
 const Elem &LinkedDeque::front() const throw(DequeEmpty) { return linkedList.front(); }
 const Elem &LinkedDeque::back() const throw(DequeEmpty) { return linkedList.back(); }
 
-void LinkedDeque::insertFront(const Elem& e) {
-    linkedList.addFront(e);
+void LinkedDeque::insertFront(const Elem& elem) {
+    linkedList.addFront(elem);
     length++;
 }
 
-void LinkedDeque::insertBack(const Elem& e) {
-    linkedList.addBack(e);
+void LinkedDeque::insertBack(const Elem& elem) {
+    linkedList.addBack(elem);
     length++;
 }
 

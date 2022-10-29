@@ -25,12 +25,12 @@ public:
         return arr[length];
     };
 
-    void push(const E& e) throw(StackFull) {
+    void push(const E& elem) throw(StackFull) {
         if (size() == capacity) {
             throw StackFull("Push to full stack");
         }
 
-        arr[++length] = e;
+        arr[++length] = elem;
     };
 
     void pop() throw(StackEmpty) {

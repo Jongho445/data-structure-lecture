@@ -16,14 +16,14 @@ public:
     Elem& operator[](int i);
     Elem& at(int i) throw(IndexOutOfBounds);
 
-    void erase(int i);
-    void insert(int i, const Elem& e);
+    void erase(int idx);
+    void insert(int idx, const Elem& elem);
 
-    void reserve(int N);
+    void reserve(int newCapacity);
 private:
     int capacity;
-    int n;
-    Elem* A;
+    int length;
+    Elem* arr;
 };
 
 

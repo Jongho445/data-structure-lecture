@@ -17,17 +17,9 @@ DLinkedList::~DLinkedList() {
     delete trailer;
 }
 
-bool DLinkedList::empty() const {
-    return header->next == trailer;
-}
-
-const Elem& DLinkedList::front() const {
-    return header->next->elem;
-}
-
-const Elem& DLinkedList::back() const {
-    return trailer->prev->elem;
-}
+bool DLinkedList::empty() const { return header->next == trailer; }
+const Elem& DLinkedList::front() const { return header->next->elem; }
+const Elem& DLinkedList::back() const { return trailer->prev->elem; }
 
 void DLinkedList::add(DNode *nextNode, const Elem &elem) {
     DNode *prevNode = nextNode->prev;
@@ -36,14 +28,6 @@ void DLinkedList::add(DNode *nextNode, const Elem &elem) {
 
     nextNode->prev = newNode;
     prevNode->next = newNode;
-}
-
-void DLinkedList::addFront(const Elem &elem){
-    add(header->next, elem);
-}
-
-void DLinkedList::addBack(const Elem &elem){
-    add(trailer, elem);
 }
 
 void DLinkedList::remove(DNode *targetNode) {
@@ -56,13 +40,11 @@ void DLinkedList::remove(DNode *targetNode) {
     delete targetNode;
 }
 
-void DLinkedList::removeFront() {
-    remove(header->next);
-}
+void DLinkedList::addFront(const Elem &elem){ add(header->next, elem); }
+void DLinkedList::addBack(const Elem &elem){ add(trailer, elem); }
 
-void DLinkedList::removeBack() {
-    remove(trailer->prev);
-}
+void DLinkedList::removeFront() { remove(header->next); }
+void DLinkedList::removeBack() { remove(trailer->prev); }
 
 string DLinkedList::toString() {
     string result = "[\n";

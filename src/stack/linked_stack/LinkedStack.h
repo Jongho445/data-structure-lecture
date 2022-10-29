@@ -16,7 +16,7 @@ public:
     int size() const;
     bool empty() const;
     const Elem& top() const throw(StackEmpty);
-    void push(const Elem& e);
+    void push(const Elem& elem);
     void pop() throw(StackEmpty);
 private:
     SLinkedList<Elem> linkedList;

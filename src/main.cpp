@@ -10,6 +10,7 @@
 
 #include "stack/array_stack/ArrayStackTest.h"
 #include "stack/linked_stack/LinkedStackTest.h"
+#include "queue/array_queue/ArrayQueueTest.h"
 #include "queue/linked_queue/LinkedQueueTest.h"
 #include "queue/linked_deque/LinkedDequeTest.h"
 #include "stack/deque_stack/DequeStackTest.h"
@@ -21,19 +22,20 @@ int main() {
 //    GameScoresTest::run();
 //    InsertionSortTest::run();
 //    RulerDrawerTest::run();
-
+//
 //    SinglyLinkedListTest::run();
 //    DoublyLinkedListTest::run();
 //    CircularlyLinkedListTest::run();
-
-    ArrayStackTest::run();
-    LinkedStackTest::run();
-    LinkedQueueTest::run();
-    LinkedDequeTest::run();
-    DequeStackTest::run();
-
-    ArrayVectorTest::run();
-    NodeListTest::run();
+//
+//    ArrayStackTest::run();
+//    LinkedStackTest::run();
+    ArrayQueueTest::run();
+//    LinkedQueueTest::run();
+//    LinkedDequeTest::run();
+//    DequeStackTest::run();
+//
+//    ArrayVectorTest::run();
+//    NodeListTest::run();
 
     return EXIT_SUCCESS;
 }
