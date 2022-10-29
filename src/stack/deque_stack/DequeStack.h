@@ -23,7 +23,7 @@ public:
 
     string toString();
 private:
-    LinkedDeque D;
+    LinkedDeque deque;
 };
 
 #endif //DATA_STRUCTURE_LECTURE_DEQUESTACK_H

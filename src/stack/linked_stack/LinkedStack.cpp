@@ -1,13 +1,13 @@
 #include "LinkedStack.h"
 
-LinkedStack::LinkedStack(): S(), n(0) { }
+LinkedStack::LinkedStack(): linkedList(), length(0) { }
 
 int LinkedStack::size() const {
-    return n;
+    return length;
 }
 
 bool LinkedStack::empty() const {
-    return n == 0;
+    return length == 0;
 }
 
 const Elem& LinkedStack::top() const throw(StackEmpty) {
@@ -15,11 +15,12 @@ const Elem& LinkedStack::top() const throw(StackEmpty) {
         throw StackEmpty("Top of empty stack");
     }
 
-    return S.front();
+    return linkedList.front();
 }
+
 void LinkedStack::push(const Elem& e) {
-    ++n;
-    S.addFront(e);
+    linkedList.addFront(e);
+    ++length;
 }
 
 void LinkedStack::pop() throw(StackEmpty) {
@@ -27,6 +28,6 @@ void LinkedStack::pop() throw(StackEmpty) {
         throw StackEmpty("Pop from empty stack");
     }
 
-    --n;
-    S.removeFront();
+    linkedList.removeFront();
+    --length;
 }

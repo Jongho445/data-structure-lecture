@@ -19,8 +19,8 @@ public:
     void push(const Elem& e);
     void pop() throw(StackEmpty);
 private:
-    SLinkedList<Elem> S;
-    int n;
+    SLinkedList<Elem> linkedList;
+    int length;
 };
 
 

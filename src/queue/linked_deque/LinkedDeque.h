@@ -25,8 +25,8 @@ public:
 
     string toString();
 private:
-    DLinkedList D;
-    int n;
+    DLinkedList linkedList;
+    int length;
 };
 
 

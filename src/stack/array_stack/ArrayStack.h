@@ -9,25 +9,20 @@ class ArrayStack {
     enum { DEF_CAPACITY = 100 };
 public:
     ArrayStack(int cap = DEF_CAPACITY) {
-        S = new E[cap];
+        arr = new E[cap];
         capacity = cap;
-        t = -1;
+        length = -1;
     };
 
-    int size() const {
-        return (t + 1);
-    };
-
-    bool empty() const {
-        return (t < 0);
-    };
+    int size() const { return length + 1; };
+    bool empty() const { return length < 0; };
 
     const E& top() const throw(StackEmpty) {
         if (empty()) {
             throw StackEmpty("Top of empty stack");
         }
 
-        return S[t];
+        return arr[length];
     };
 
     void push(const E& e) throw(StackFull) {
@@ -35,7 +30,7 @@ public:
             throw StackFull("Push to full stack");
         }
 
-        S[++t] = e;
+        arr[++length] = e;
     };
 
     void pop() throw(StackEmpty) {
@@ -43,12 +38,13 @@ public:
             throw StackEmpty("Pop from empty stack");
         }
 
-        --t;
+        --length;
     };
+
 private:
-    E* S;
+    E* arr;
     int capacity;
-    int t;
+    int length;
 };
 
 #endif //DATA_STRUCTURE_LECTURE_ARRAYSTACK_H

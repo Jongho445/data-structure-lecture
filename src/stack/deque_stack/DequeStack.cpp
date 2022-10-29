@@ -1,31 +1,28 @@
 #include "DequeStack.h"
 
-DequeStack::DequeStack(): D() {}
+DequeStack::DequeStack(): deque() {}
 
-int DequeStack::size() const {
-    return D.size();
-}
-
-bool DequeStack::empty() const {
-    return D.empty();
-}
+int DequeStack::size() const { return deque.size(); }
+bool DequeStack::empty() const { return deque.empty(); }
 
 const Elem& DequeStack::top() const throw(StackEmpty) {
-    if (empty())
+    if (empty()) {
         throw StackEmpty("top of empty stack");
-    return D.front();
+    }
+
+    return deque.front();
 }
 
 void DequeStack::push(const Elem& e) {
-    D.insertFront(e);
+    deque.insertFront(e);
 }
 
 void DequeStack::pop() throw(StackEmpty) {
-    if (empty())
+    if (empty()) {
         throw StackEmpty("pop of empty stack");
-    D.removeFront();
+    }
+
+    deque.removeFront();
 }
 
-string DequeStack::toString() {
-    return D.toString();
-}
+string DequeStack::toString() { return deque.toString(); }

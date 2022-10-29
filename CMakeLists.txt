@@ -15,8 +15,8 @@ add_executable(
         src/stack/linked_stack/LinkedStack.cpp src/stack/linked_stack/LinkedStack.h src/stack/linked_stack/LinkedStackTest.h
         src/queue/linked_queue/LinkedQueue.cpp src/queue/linked_queue/LinkedQueue.h src/exception/QueueEmpty.h src/queue/linked_queue/LinkedQueueTest.h
         src/algorithm/ruler_drawer/RulerDrawer.cpp src/algorithm/ruler_drawer/RulerDrawer.h src/algorithm/ruler_drawer/RulerDrawerTest.h
-        src/list/array_vector/ArrayVector.cpp src/list/array_vector/ArrayVector.h src/list/array_vector/ArrayVectorTest.h
-        src/list/node_list/NodeList.cpp src/list/node_list/NodeList.h src/list/node_list/Node.cpp src/list/node_list/Node.h src/list/node_list/Iterator.cpp src/list/node_list/NodeListTest.h
+        src/adt/array_vector/ArrayVector.cpp src/adt/array_vector/ArrayVector.h src/adt/array_vector/ArrayVectorTest.h
+        src/adt/node_list/NodeList.cpp src/adt/node_list/NodeList.h src/adt/node_list/Node.cpp src/adt/node_list/Node.h src/adt/node_list/Iterator.cpp src/adt/node_list/NodeListTest.h
         src/queue/linked_deque/LinkedDeque.cpp src/queue/linked_deque/LinkedDeque.h src/queue/linked_deque/LinkedDequeTest.h src/exception/DequeEmpty.h
         src/stack/deque_stack/DequeStack.cpp src/stack/deque_stack/DequeStack.h src/stack/deque_stack/DequeStackTest.h
 )

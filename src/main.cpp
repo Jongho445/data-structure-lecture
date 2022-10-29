@@ -14,8 +14,8 @@
 #include "queue/linked_deque/LinkedDequeTest.h"
 #include "stack/deque_stack/DequeStackTest.h"
 
-#include "list/array_vector/ArrayVectorTest.h"
-#include "list/node_list/NodeListTest.h"
+#include "adt/array_vector/ArrayVectorTest.h"
+#include "adt/node_list/NodeListTest.h"
 
 int main() {
 //    GameScoresTest::run();
@@ -26,14 +26,14 @@ int main() {
 //    DoublyLinkedListTest::run();
 //    CircularlyLinkedListTest::run();
 
-//    ArrayStackTest::run();
-//    LinkedStackTest::run();
-//    LinkedQueueTest::run();
+    ArrayStackTest::run();
+    LinkedStackTest::run();
+    LinkedQueueTest::run();
     LinkedDequeTest::run();
-//    DequeStackTest::run();
+    DequeStackTest::run();
 
-//    ArrayVectorTest::run();
-//    NodeListTest::run();
+    ArrayVectorTest::run();
+    NodeListTest::run();
 
     return EXIT_SUCCESS;
 }

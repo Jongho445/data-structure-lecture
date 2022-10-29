@@ -24,8 +24,8 @@ public:
 
     string toString();
 private:
-    CircleList C;
-    int n;
+    CircleList linkedList;
+    int length;
 };
 
 

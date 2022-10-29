@@ -1,32 +1,22 @@
 #include "LinkedDeque.h"
 
 
-LinkedDeque::LinkedDeque(): D(), n(0) {}
+LinkedDeque::LinkedDeque(): linkedList(), length(0) {}
 
-int LinkedDeque::size() const {
-    return n;
-}
+int LinkedDeque::size() const { return length; }
+bool LinkedDeque::empty() const { return linkedList.empty(); }
 
-bool LinkedDeque::empty() const {
-    return D.empty();
-}
-
-const Elem &LinkedDeque::front() const throw(DequeEmpty) {
-    return D.front();
-}
-
-const Elem &LinkedDeque::back() const throw(DequeEmpty) {
-    return D.back();
-}
+const Elem &LinkedDeque::front() const throw(DequeEmpty) { return linkedList.front(); }
+const Elem &LinkedDeque::back() const throw(DequeEmpty) { return linkedList.back(); }
 
 void LinkedDeque::insertFront(const Elem& e) {
-    D.addFront(e);
-    n++;
+    linkedList.addFront(e);
+    length++;
 }
 
 void LinkedDeque::insertBack(const Elem& e) {
-    D.addBack(e);
-    n++;
+    linkedList.addBack(e);
+    length++;
 }
 
 void LinkedDeque::removeFront() throw(DequeEmpty) {
@@ -34,8 +24,8 @@ void LinkedDeque::removeFront() throw(DequeEmpty) {
         throw DequeEmpty("removeFront of empty deque");
     }
 
-    D.removeFront();
-    n--;
+    linkedList.removeFront();
+    length--;
 }
 
 void LinkedDeque::removeBack() throw(DequeEmpty) {
@@ -43,10 +33,8 @@ void LinkedDeque::removeBack() throw(DequeEmpty) {
         throw DequeEmpty("removeBack of empty deque");
     }
 
-    D.removeBack();
-    n--;
+    linkedList.removeBack();
+    length--;
 }
 
-string LinkedDeque::toString() {
-    return D.toString();
-}
+string LinkedDeque::toString() { return linkedList.toString(); }

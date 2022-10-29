@@ -1,34 +1,31 @@
 #include "LinkedQueue.h"
 
-LinkedQueue::LinkedQueue(): C(), n(0) { }
+LinkedQueue::LinkedQueue(): linkedList(), length(0) { }
 
-int LinkedQueue::size() const {
-    return n;
-}
-
-bool LinkedQueue::empty() const {
-    return n == 0;
-}
+int LinkedQueue::size() const { return length; }
+bool LinkedQueue::empty() const { return length == 0; }
 
 const Elem& LinkedQueue::front() const throw(QueueEmpty) {
-    if (empty())
+    if (empty()) {
         throw QueueEmpty("front of empty queue");
-    return C.front();
+    }
+
+    return linkedList.front();
 }
 
 void LinkedQueue::enqueue(const Elem& e) {
-    C.add(e);
-    C.advance();
-    n++;
+    linkedList.add(e);
+    linkedList.advance();
+    length++;
 }
 
 void LinkedQueue::dequeue() throw(QueueEmpty) {
-    if (empty())
+    if (empty()) {
         throw QueueEmpty("dequeue of empty queue");
-    C.remove();
-    n--;
+    }
+
+    linkedList.remove();
+    length--;
 }
 
-string LinkedQueue::toString() {
-    return C.toString();
-}
+string LinkedQueue::toString() { return linkedList.toString(); }
