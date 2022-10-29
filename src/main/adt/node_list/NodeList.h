@@ -4,6 +4,7 @@
 
 #include "string"
 #include "../../linked_list/node/DNode.h"
+#include "Iterator.h"
 
 using namespace std;
 
@@ -11,38 +12,53 @@ typedef string Elem;
 
 class NodeList {
 public:
-    class Iterator {
-    public:
-        Elem &operator*();
+    NodeList() {
+        header = new DNode();
+        trailer = new DNode();
 
-        bool operator==(const Iterator& targetIter) const;
-        bool operator!=(const Iterator& targetIter) const;
+        header->next = trailer;
+        trailer->prev = header;
 
-        Iterator &operator++();
-        Iterator &operator--();
+        length = 0;
+    }
 
-        friend class NodeList;
-    private:
-        Iterator(DNode *initNode);
+    int size() const { return length; }
+    bool empty() const { return length == 0; }
 
-        DNode *curNode;
-    };
+    Iterator begin() const { return Iterator(header->next); }
+    Iterator end() const { return Iterator(trailer); }
 
-    NodeList();
+    void insert(const Iterator& targetIter, const Elem& elem) {
+        DNode *nextNode = targetIter.curNode;
+        DNode *prevNode = nextNode->prev;
 
-    int size() const;
-    bool empty() const;
+        DNode *newNode = new DNode(elem, prevNode, nextNode);
 
-    Iterator begin() const;
-    Iterator end() const;
+        nextNode->prev = newNode;
+        prevNode->next = newNode;
 
-    void insertFront(const Elem& elem);
-    void insertBack(const Elem& elem);
-    void insert(const Iterator& targetIter, const Elem& elem);
+        length++;
+    }
 
-    void eraseFront();
-    void eraseBack();
-    void erase(const Iterator& targetIter);
+    void erase(const Iterator& targetIter) {
+        DNode *targetNode = targetIter.curNode;
+
+        DNode *nextNode = targetNode->next;
+        DNode *prevNode = targetNode->prev;
+
+        prevNode->next = nextNode;
+        nextNode->prev = prevNode;
+
+        delete targetNode;
+
+        length--;
+    }
+
+    void insertFront(const Elem& elem) { insert(begin(), elem); }
+    void insertBack(const Elem& elem) { insert(end(), elem); }
+
+    void eraseFront() { erase(begin()); }
+    void eraseBack() { erase(--end()); }
 
 private:
     int length;

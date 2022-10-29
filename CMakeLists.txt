@@ -16,7 +16,7 @@ add_executable(
         src/main/queue/LinkedQueue.h src/main/exception/QueueEmpty.h src/test/queue/LinkedQueueTest.h
         src/main/algorithm/ruler_drawer/RulerDrawer.cpp src/main/algorithm/ruler_drawer/RulerDrawer.h src/test/algorithm/RulerDrawerTest.h
         src/main/adt/array_vector/ArrayVector.cpp src/main/adt/array_vector/ArrayVector.h src/test/adt/ArrayVectorTest.h
-        src/main/adt/node_list/NodeList.cpp src/main/adt/node_list/NodeList.h src/main/adt/node_list/Iterator.cpp src/test/adt/NodeListTest.h
+        src/main/adt/node_list/NodeList.h src/test/adt/NodeListTest.h src/main/adt/node_list/Iterator.h
         src/main/queue/LinkedDeque.h src/test/queue/LinkedDequeTest.h src/main/exception/DequeEmpty.h
         src/main/stack/DequeStack.h src/test/stack/DequeStackTest.h
         src/main/queue/ArrayQueue.h src/main/exception/QueueFull.h src/test/queue/ArrayQueueTest.h

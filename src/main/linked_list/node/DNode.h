@@ -56,7 +56,9 @@ private:
 
     friend class DLinkedList;
     friend class DoublyLinkedListTest;
+
     friend class NodeList;
+    friend class Iterator;
 };
 
 #endif //DATA_STRUCTURE_LECTURE_DNODE_H

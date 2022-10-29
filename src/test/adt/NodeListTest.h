@@ -16,12 +16,12 @@ public:
         list.insertFront("2nd");
         list.insertFront("3rd");
 
-        NodeList::Iterator iterator1 = list.begin();
+        Iterator iterator1 = list.begin();
         cout << *iterator1 << endl;
 
         list.eraseFront();
 
-        NodeList::Iterator iterator2 = list.begin();
+        Iterator iterator2 = list.begin();
         cout << *iterator2 << endl;
     }
 };

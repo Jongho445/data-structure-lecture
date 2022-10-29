@@ -23,9 +23,9 @@ int main() {
 //    InsertionSortTest::run();
 //    RulerDrawerTest::run();
 //
-    SinglyLinkedListTest::run();
-    DoublyLinkedListTest::run();
-    CircularlyLinkedListTest::run();
+//    SinglyLinkedListTest::run();
+//    DoublyLinkedListTest::run();
+//    CircularlyLinkedListTest::run();
 //
 //    ArrayStackTest::run();
 //    LinkedStackTest::run();
@@ -35,7 +35,7 @@ int main() {
 //    DequeStackTest::run();
 //
 //    ArrayVectorTest::run();
-//    NodeListTest::run();
+    NodeListTest::run();
 
     return EXIT_SUCCESS;
 }
