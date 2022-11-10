@@ -3,18 +3,17 @@
 
 
 #include "string"
-#include "../../linked_list/node/DNode.h"
+#include "../../linked_list/node/DoubleNode.h"
 #include "Iterator.h"
 
 using namespace std;
 
-typedef string Elem;
-
+template <typename E>
 class NodeList {
 public:
     NodeList() {
-        header = new DNode();
-        trailer = new DNode();
+        header = new DoubleNode<E>();
+        trailer = new DoubleNode<E>();
 
         header->next = trailer;
         trailer->prev = header;
@@ -25,14 +24,17 @@ public:
     int size() const { return length; }
     bool empty() const { return length == 0; }
 
-    Iterator begin() const { return Iterator(header->next); }
-    Iterator end() const { return Iterator(trailer); }
+    E getFront() { return header->next->elem; }
+    E getBack() { return trailer->prev->elem; }
 
-    void insert(const Iterator& targetIter, const Elem& elem) {
-        DNode *nextNode = targetIter.curNode;
-        DNode *prevNode = nextNode->prev;
+    Iterator<E> begin() const { return Iterator<E>(header->next); }
+    Iterator<E> end() const { return Iterator<E>(trailer); }
 
-        DNode *newNode = new DNode(elem, prevNode, nextNode);
+    void insert(const Iterator<E>& targetIter, const E& elem) {
+        DoubleNode<E> *nextNode = targetIter.getCurNode();
+        DoubleNode<E> *prevNode = nextNode->prev;
+
+        DoubleNode<E> *newNode = new DoubleNode<E>(elem, prevNode, nextNode);
 
         nextNode->prev = newNode;
         prevNode->next = newNode;
@@ -40,11 +42,11 @@ public:
         length++;
     }
 
-    void erase(const Iterator& targetIter) {
-        DNode *targetNode = targetIter.curNode;
+    void erase(const Iterator<E>& targetIter) {
+        DoubleNode<E> *targetNode = targetIter.getCurNode();
 
-        DNode *nextNode = targetNode->next;
-        DNode *prevNode = targetNode->prev;
+        DoubleNode<E> *nextNode = targetNode->next;
+        DoubleNode<E> *prevNode = targetNode->prev;
 
         prevNode->next = nextNode;
         nextNode->prev = prevNode;
@@ -54,8 +56,8 @@ public:
         length--;
     }
 
-    void insertFront(const Elem& elem) { insert(begin(), elem); }
-    void insertBack(const Elem& elem) { insert(end(), elem); }
+    void insertFront(const E& elem) { insert(begin(), elem); }
+    void insertBack(const E& elem) { insert(end(), elem); }
 
     void eraseFront() { erase(begin()); }
     void eraseBack() { erase(--end()); }
@@ -63,8 +65,8 @@ public:
 private:
     int length;
 
-    DNode *header;
-    DNode *trailer;
+    DoubleNode<E> *header;
+    DoubleNode<E> *trailer;
 };
 
 

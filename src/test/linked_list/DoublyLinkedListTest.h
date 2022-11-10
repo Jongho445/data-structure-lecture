@@ -10,7 +10,7 @@ using namespace std;
 class DoublyLinkedListTest {
 public:
     static void run() {
-        DLinkedList list = DLinkedList();
+        DLinkedList<string> list = DLinkedList<string>();
 
         // add elem to the front, 4 times
         list.addFront("1st");
@@ -27,7 +27,7 @@ public:
         cout << list.toString() + "\n" << endl;
 
         // add "5th elem" between "2nd elem" and "1st elem"
-        DNode *targetNode = list.header->next->next;
+        DoubleNode<string> *targetNode = list.header->next->next;
         list.add(targetNode, "5th");
 
         cout << list.toString() + "\n" << endl;

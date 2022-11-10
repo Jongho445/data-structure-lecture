@@ -10,18 +10,18 @@ using namespace std;
 class NodeListTest {
 public:
     static void run() {
-        NodeList list = NodeList();
+        NodeList<string> list = NodeList<string>();
 
         list.insertFront("1st");
         list.insertFront("2nd");
         list.insertFront("3rd");
 
-        Iterator iterator1 = list.begin();
+        Iterator<string> iterator1 = list.begin();
         cout << *iterator1 << endl;
 
         list.eraseFront();
 
-        Iterator iterator2 = list.begin();
+        Iterator<string> iterator2 = list.begin();
         cout << *iterator2 << endl;
     }
 };

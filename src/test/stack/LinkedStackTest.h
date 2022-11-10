@@ -10,7 +10,7 @@ class LinkedStackTest {
 public:
     static void run() {
         // case string
-        LinkedStack B; // B = [], size = 0
+        LinkedStack<string> B; // B = [], size = 0
 
         B.push("Bob"); // B = [Bob*], size = 1
         B.push("Alice"); // B = [Bob, Alice*], size = 2

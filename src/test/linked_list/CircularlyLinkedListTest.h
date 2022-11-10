@@ -9,7 +9,7 @@ using namespace std;
 class CircularlyLinkedListTest {
 public:
     static void run() {
-        CircleList playList; // []
+        CircleList<string> playList; // []
 
         playList.add("Stayin Alive"); // [Stayin Alive*]
         cout << playList.toString() << endl;

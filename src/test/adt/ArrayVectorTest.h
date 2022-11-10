@@ -10,7 +10,7 @@ using namespace std;
 class ArrayVectorTest {
 public:
     static void run() {
-        ArrayVector vector;
+        ArrayVector<string> vector;
 
         vector.insert(0, "1st");
         vector.insert(0, "2nd");

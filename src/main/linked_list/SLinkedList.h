@@ -2,7 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_SLINKEDLIST_H
 
 
-#include "node/SNode.h"
+#include "node/SingleNode.h"
 
 template <typename E>
 class SLinkedList {
@@ -19,7 +19,7 @@ public:
     const E& front() const { return head->elem; };
 
     void addFront(const E& elem) {
-        SNode<E>* newNode = new SNode<E>;
+        SingleNode<E>* newNode = new SingleNode<E>;
 
         newNode->elem = elem;
         newNode->next = head;
@@ -28,7 +28,7 @@ public:
     };
 
     void removeFront() {
-        SNode<E>* targetNode = head;
+        SingleNode<E>* targetNode = head;
 
         head = targetNode->next;
 
@@ -37,7 +37,7 @@ public:
 
     string toString() {
         string result = "[ ";
-        SNode<E> *curNode = head ? head : nullptr;
+        SingleNode<E> *curNode = head ? head : nullptr;
 
         while (curNode != nullptr) {
             result += curNode->elem;
@@ -54,7 +54,7 @@ public:
         return result;
     }
 private:
-    SNode<E>* head;
+    SingleNode<E>* head;
 };
 
 #endif //DATA_STRUCTURE_LECTURE_SLINKEDLIST_H

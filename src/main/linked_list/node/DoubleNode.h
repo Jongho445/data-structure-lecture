@@ -1,18 +1,26 @@
-#ifndef DATA_STRUCTURE_LECTURE_DNODE_H
-#define DATA_STRUCTURE_LECTURE_DNODE_H
+#ifndef DATA_STRUCTURE_LECTURE_DOUBLENODE_H
+#define DATA_STRUCTURE_LECTURE_DOUBLENODE_H
 
 
 #include "string"
 
 using namespace std;
 
-typedef string Elem;
+//typedef string Elem;
 
-class DNode {
+template <typename E>
+class DoubleNode {
 public:
-    DNode(): prev(nullptr), next(nullptr) {}
 
-    DNode(Elem value, DNode *prevNode, DNode *nextNode) {
+    E elem;
+    DoubleNode* prev;
+    DoubleNode* next;
+
+    bool isHeader() { return prev == nullptr; }
+    bool isTrailer() { return next == nullptr; }
+
+    DoubleNode(): prev(nullptr), next(nullptr) {}
+    DoubleNode(E value, DoubleNode *prevNode, DoubleNode *nextNode) {
         elem = value;
 
         prev = prevNode;
@@ -33,7 +41,7 @@ public:
 //                + "\", next: " + toString(next) + " }";
         }
     }
-    string toString(DNode *node) {
+    string toString(DoubleNode *node) {
         string result = node->elem;
 
         if (result.empty()) {
@@ -46,19 +54,6 @@ public:
 
         return "\"" + result + "\"";
     }
-private:
-    Elem elem;
-    DNode* prev;
-    DNode* next;
-
-    bool isHeader() { return prev == nullptr; }
-    bool isTrailer() { return next == nullptr; }
-
-    friend class DLinkedList;
-    friend class DoublyLinkedListTest;
-
-    friend class NodeList;
-    friend class Iterator;
 };
 
-#endif //DATA_STRUCTURE_LECTURE_DNODE_H
+#endif //DATA_STRUCTURE_LECTURE_DOUBLENODE_H

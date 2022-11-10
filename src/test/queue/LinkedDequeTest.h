@@ -10,7 +10,7 @@ using namespace std;
 class LinkedDequeTest {
 public:
     static void run() {
-        LinkedDeque deque = LinkedDeque();
+        LinkedDeque<string> deque = LinkedDeque<string>();
         
         deque.insertFront("1st");
         deque.insertFront("2nd");

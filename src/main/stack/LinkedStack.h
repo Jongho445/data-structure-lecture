@@ -8,8 +8,7 @@
 
 using namespace std;
 
-typedef string Elem;
-
+template <typename E>
 class LinkedStack {
 public:
     LinkedStack(): linkedList(), length(0) {}
@@ -17,7 +16,7 @@ public:
     int size() const { return length; }
     bool empty() const { return length == 0; }
 
-    const Elem& top() const throw(StackEmpty) {
+    const E& top() const throw(StackEmpty) {
         if (empty()) {
             throw StackEmpty("Top of empty stack");
         }
@@ -25,7 +24,7 @@ public:
         return linkedList.front();
     }
 
-    void push(const Elem& elem) {
+    void push(const E& elem) {
         linkedList.addFront(elem);
         length++;
     }
@@ -39,7 +38,7 @@ public:
         length--;
     }
 private:
-    SLinkedList<Elem> linkedList;
+    SLinkedList<E> linkedList;
     int length;
 };
 

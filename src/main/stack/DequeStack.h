@@ -8,7 +8,7 @@
 
 using namespace std;
 
-typedef string Elem;
+template <typename E>
 class DequeStack {
 public:
     DequeStack(): deque() {}
@@ -16,7 +16,7 @@ public:
     int size() const { return deque.size(); }
     bool empty() const { return deque.empty(); }
 
-    const Elem& top() const throw(StackEmpty) {
+    const E& top() const throw(StackEmpty) {
         if (empty()) {
             throw StackEmpty("top of empty stack");
         }
@@ -24,7 +24,7 @@ public:
         return deque.front();
     }
 
-    void push(const Elem& elem) {
+    void push(const E& elem) {
         deque.insertFront(elem);
     }
 
@@ -38,7 +38,7 @@ public:
 
     string toString() { return deque.toString(); }
 private:
-    LinkedDeque deque;
+    LinkedDeque<E> deque;
 };
 
 #endif //DATA_STRUCTURE_LECTURE_DEQUESTACK_H

@@ -8,12 +8,11 @@
 
 using namespace std;
 
-typedef string Elem;
-
+template <typename E>
 class ArrayQueue {
 public:
     ArrayQueue(int capacity) {
-        arr = new Elem[capacity];
+        arr = new E[capacity];
         this->capacity = capacity;
         length = 0;
         head = 0;
@@ -23,7 +22,7 @@ public:
     int size() const { return length; };
     bool empty() const { return length == 0; };
 
-    const Elem& front() const throw(QueueEmpty) {
+    const E& front() const throw(QueueEmpty) {
         if (empty()) {
             throw QueueEmpty("front of empty queue");
         }
@@ -31,7 +30,7 @@ public:
         return arr[head];
     };
 
-    void enqueue(const Elem& elem) {
+    void enqueue(const E& elem) {
         if (length >= capacity) {
             throw QueueFull("queue is full");
         }
@@ -52,7 +51,7 @@ public:
     };
 
 private:
-    Elem *arr;
+    E *arr;
     int capacity;
 
     int length;

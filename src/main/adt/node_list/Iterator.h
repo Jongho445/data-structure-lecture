@@ -2,25 +2,29 @@
 #define DATA_STRUCTURE_LECTURE_ITERATOR_H
 
 
-#include "string"
-#include "../../linked_list/node/DNode.h"
+#include "../../linked_list/node/DoubleNode.h"
 
 using namespace std;
 
-typedef string Elem;
-
+template <typename E>
 class Iterator {
 public:
-    Iterator(DNode* initNode) {
+    DoubleNode<E> *curNode;
+
+    Iterator(DoubleNode<E>* initNode) {
         curNode = initNode;
     }
 
-    Elem &operator*() { return curNode->elem; }
+    DoubleNode<E> *getCurNode() const {
+        return curNode;
+    }
 
-    bool operator==(const Iterator& targetIter) const { return curNode == targetIter.curNode; }
-    bool operator!=(const Iterator& targetIter) const { return curNode != targetIter.curNode; }
+    E &operator*() { return curNode->elem; }
 
-    Iterator &operator++() {
+    bool operator==(const Iterator<E>& targetIter) const { return curNode == targetIter.curNode; }
+    bool operator!=(const Iterator<E>& targetIter) const { return curNode != targetIter.curNode; }
+
+    Iterator<E> &operator++() {
         curNode = curNode->next;
 
         return *this;
@@ -31,10 +35,6 @@ public:
 
         return *this;
     }
-
-    friend class NodeList;
-private:
-    DNode *curNode;
 };
 
 #endif //DATA_STRUCTURE_LECTURE_ITERATOR_H

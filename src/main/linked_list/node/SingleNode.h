@@ -1,16 +1,19 @@
-#ifndef DATA_STRUCTURE_LECTURE_CNODE_H
-#define DATA_STRUCTURE_LECTURE_CNODE_H
+#ifndef DATA_STRUCTURE_LECTURE_SINGLENODE_H
+#define DATA_STRUCTURE_LECTURE_SINGLENODE_H
 
 
 #include "string"
 
 using namespace std;
 
-typedef string Elem;
-
-class CNode {
+template <typename E>
+class SingleNode {
 public:
-    CNode(): next(nullptr) {}
+
+    E elem;
+    SingleNode<E> *next;
+
+    SingleNode(): next(nullptr) {}
 
     string toString() {
         if (next != nullptr) {
@@ -20,7 +23,7 @@ public:
 
         return "null";
     }
-    string toString(CNode *node) {
+    string toString(SingleNode<E> *node) {
         string result = node->elem;
 
         if (result.empty()) {
@@ -29,12 +32,7 @@ public:
 
         return "\"" + result + "\"";
     }
-private:
-    Elem elem;
-    CNode* next;
-
-    friend class CircleList;
 };
 
 
-#endif //DATA_STRUCTURE_LECTURE_CNODE_H
+#endif //DATA_STRUCTURE_LECTURE_SINGLENODE_H

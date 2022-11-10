@@ -10,7 +10,7 @@ using namespace std;
 class ArrayQueueTest {
 public:
     static void run() {
-        ArrayQueue queue = ArrayQueue(3);
+        ArrayQueue<string> queue = ArrayQueue<string>(3);
 
         queue.enqueue("1st");
         queue.enqueue("2nd");

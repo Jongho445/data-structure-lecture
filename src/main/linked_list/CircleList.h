@@ -2,8 +2,9 @@
 #define DATA_STRUCTURE_LECTURE_CIRCLELIST_H
 
 
-#include "node/CNode.h"
+#include "node/SingleNode.h"
 
+template <typename E>
 class CircleList {
 public:
     CircleList(): cursor(nullptr) {}
@@ -13,14 +14,14 @@ public:
         }
     }
 
-    const Elem& front() const { return cursor->next->elem; }
-    const Elem& back() const { return cursor->elem; }
+    const E& front() const { return cursor->next->elem; }
+    const E& back() const { return cursor->elem; }
     bool empty() const { return cursor == nullptr; }
 
     void advance() { cursor = cursor->next; }
 
-    void add(const Elem& elem) {
-        CNode *newNode = new CNode;
+    void add(const E& elem) {
+        SingleNode<E> *newNode = new SingleNode<E>;
         newNode->elem = elem;
 
         if (cursor == nullptr) {
@@ -34,7 +35,7 @@ public:
         }
     }
     void remove() {
-        CNode *targetNode = cursor->next;
+        SingleNode<E> *targetNode = cursor->next;
 
         if (targetNode == cursor) {
             cursor = nullptr;
@@ -47,7 +48,7 @@ public:
 
     string toString() {
         string result = "[ ";
-        CNode *curNode = cursor->next;
+        SingleNode<E> *curNode = cursor->next;
 
         while(true) {
             result += curNode->toString();
@@ -68,7 +69,7 @@ public:
         return result;
     }
 private:
-    CNode* cursor;
+    SingleNode<E>* cursor;
 };
 
 #endif //DATA_STRUCTURE_LECTURE_CIRCLELIST_H

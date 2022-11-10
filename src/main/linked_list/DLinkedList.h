@@ -2,13 +2,14 @@
 #define DATA_STRUCTURE_LECTURE_DLINKEDLIST_H
 
 
-#include "node/DNode.h"
+#include "node/DoubleNode.h"
 
+template <typename E>
 class DLinkedList {
 public:
     DLinkedList() {
-        header = new DNode();
-        trailer = new DNode();
+        header = new DoubleNode<E>();
+        trailer = new DoubleNode<E>();
 
         header->next = trailer;
         trailer->prev = header;
@@ -24,17 +25,17 @@ public:
     }
 
     bool empty() const { return header->next == trailer; }
-    const Elem& front() const { return header->next->elem; }
-    const Elem& back() const { return trailer->prev->elem; }
+    const E& front() const { return header->next->elem; }
+    const E& back() const { return trailer->prev->elem; }
 
-    void addFront(const Elem &elem) { add(header->next, elem); }
-    void addBack(const Elem &elem) { add(trailer, elem); }
+    void addFront(const E &elem) { add(header->next, elem); }
+    void addBack(const E &elem) { add(trailer, elem); }
     void removeFront() { remove(header->next); }
     void removeBack() { remove(trailer->prev); }
 
     string toString() {
         string result = "[\n";
-        DNode *curNode = header;
+        DoubleNode<E> *curNode = header;
 
         while (curNode != nullptr) {
             string elem = curNode->toString();
@@ -62,22 +63,22 @@ public:
         return result;
     }
 private:
-    DNode* header;
-    DNode* trailer;
+    DoubleNode<E>* header;
+    DoubleNode<E>* trailer;
 
     friend class DoublyLinkedListTest;
 protected:
-    void add(DNode *nextNode, const Elem &elem) {
-        DNode *prevNode = nextNode->prev;
+    void add(DoubleNode<E> *nextNode, const E &elem) {
+        DoubleNode<E> *prevNode = nextNode->prev;
 
-        DNode *newNode = new DNode(elem, prevNode, nextNode);
+        DoubleNode<E> *newNode = new DoubleNode<E>(elem, prevNode, nextNode);
 
         nextNode->prev = newNode;
         prevNode->next = newNode;
     }
-    void remove(DNode *targetNode) {
-        DNode *prevNode = targetNode->prev;
-        DNode *nextNode = targetNode->next;
+    void remove(DoubleNode<E> *targetNode) {
+        DoubleNode<E> *prevNode = targetNode->prev;
+        DoubleNode<E> *nextNode = targetNode->next;
 
         prevNode->next = nextNode;
         nextNode->prev = prevNode;

@@ -7,23 +7,22 @@
 
 using namespace std;
 
-typedef string Elem;
-
+template <typename E>
 class LinkedDeque {
 public:
     LinkedDeque(): linkedList(), length(0) {}
     int size() const { return length; }
     bool empty() const { return linkedList.empty(); }
 
-    const Elem& front() const throw(DequeEmpty) { return linkedList.front(); }
-    const Elem& back() const throw(DequeEmpty) { return linkedList.back(); }
+    const E& front() const throw(DequeEmpty) { return linkedList.front(); }
+    const E& back() const throw(DequeEmpty) { return linkedList.back(); }
 
-    void insertFront(const Elem& elem) {
+    void insertFront(const E& elem) {
         linkedList.addFront(elem);
         length++;
     }
 
-    void insertBack(const Elem& elem) {
+    void insertBack(const E& elem) {
         linkedList.addBack(elem);
         length++;
     }
@@ -48,7 +47,7 @@ public:
 
     string toString() { return linkedList.toString(); }
 private:
-    DLinkedList linkedList;
+    DLinkedList<E> linkedList;
     int length;
 };
 

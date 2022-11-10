@@ -8,8 +8,7 @@
 
 using namespace std;
 
-typedef string Elem;
-
+template <typename E>
 class LinkedQueue {
 public:
     LinkedQueue(): linkedList(), length(0) { }
@@ -17,7 +16,7 @@ public:
     int size() const { return length; }
     bool empty() const { return length == 0; }
 
-    const Elem& front() const throw(QueueEmpty) {
+    const E& front() const throw(QueueEmpty) {
         if (empty()) {
             throw QueueEmpty("front of empty queue");
         }
@@ -25,7 +24,7 @@ public:
         return linkedList.front();
     }
 
-    void enqueue(const Elem& elem) {
+    void enqueue(const E& elem) {
         linkedList.add(elem);
         linkedList.advance();
         length++;
@@ -42,7 +41,7 @@ public:
 
     string toString() { return linkedList.toString(); }
 private:
-    CircleList linkedList;
+    CircleList<E> linkedList;
     int length;
 };
 

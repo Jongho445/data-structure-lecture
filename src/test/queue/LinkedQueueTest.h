@@ -10,7 +10,7 @@ using namespace std;
 class LinkedQueueTest {
 public:
     static void run() {
-        LinkedQueue queue = LinkedQueue();
+        LinkedQueue<string> queue = LinkedQueue<string>();
 
         queue.enqueue("1st");
         cout << queue.toString() << endl;

@@ -10,7 +10,7 @@ using namespace std;
 class DequeStackTest {
 public:
     static void run() {
-        DequeStack dequeStack = DequeStack();
+        DequeStack<string> dequeStack = DequeStack<string>();
 
         dequeStack.push("1st");
         dequeStack.push("2nd");

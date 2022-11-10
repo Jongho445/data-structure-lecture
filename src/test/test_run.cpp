@@ -18,6 +18,8 @@
 #include "adt/ArrayVectorTest.h"
 #include "adt/NodeListTest.h"
 
+#include "tree/TreeTest.h"
+
 int main() {
 //    GameScoresTest::run();
 //    InsertionSortTest::run();
@@ -35,7 +37,9 @@ int main() {
 //    DequeStackTest::run();
 //
 //    ArrayVectorTest::run();
-    NodeListTest::run();
+//    NodeListTest::run();
+
+    TreeTest::run();
 
     return EXIT_SUCCESS;
 }
