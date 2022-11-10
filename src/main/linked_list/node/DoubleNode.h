@@ -6,8 +6,6 @@
 
 using namespace std;
 
-//typedef string Elem;
-
 template <typename E>
 class DoubleNode {
 public:

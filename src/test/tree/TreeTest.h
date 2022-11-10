@@ -9,23 +9,29 @@ using namespace std;
 class TreeTest {
 public:
     static void run() {
-        string str1 = "1st";
-        Tree<string> tree = Tree<string>(&str1);
-
-        string str2 = "2nd";
-        const Position<string> &position1 = Position<string>(&str2, tree.getRoot());
-        tree.getRoot()->getChildren()->insertBack(position1);
-
-        string str3 = "3rd";
-        const Position<string> &position2 = Position<string>(&str3, tree.getRoot());
-        tree.getRoot()->getChildren()->insertBack(position2);
+        Tree<string> tree = createTree();
         
-        string *f = tree.getRoot()->getChildren()->getFront().operator*();
-        string *b = tree.getRoot()->getChildren()->getBack().operator*();
-        cout << *f << endl;
-        cout << *b << endl;
+        string f = tree.getRoot()->getChildren()->getFront().operator*();
+        string b = tree.getRoot()->getChildren()->getBack().operator*();
+        cout << f << endl;
+        cout << b << endl;
 
-        cout << tree.depth(tree, position2) << endl;
+        cout << tree.height1(tree) << endl;
+        cout << tree.height2(tree, *tree.getRoot()) << endl;
+    }
+
+    static Tree<string> createTree() {
+        Tree<string> tree = Tree<string>("1st");
+
+        const Position<string> &position1 = Position<string>("2nd", tree.getRoot());
+        tree.getRoot()->getChildren()->insertBack(position1);
+        tree.getPositions()->insertBack(position1);
+
+        const Position<string> &position2 = Position<string>("3rd", tree.getRoot());
+        tree.getRoot()->getChildren()->insertBack(position2);
+        tree.getPositions()->insertBack(position2);
+
+        return tree;
     }
 };
 
