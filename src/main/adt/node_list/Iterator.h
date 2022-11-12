@@ -19,10 +19,17 @@ public:
         return curNode;
     }
 
-    E &operator*() { return curNode->elem; }
+    E &operator*() const {
+        return curNode->elem;
+    }
 
-    bool operator==(const Iterator<E>& targetIter) const { return curNode == targetIter.curNode; }
-    bool operator!=(const Iterator<E>& targetIter) const { return curNode != targetIter.curNode; }
+    bool operator==(const Iterator<E>& targetIter) const {
+        return curNode == targetIter.curNode;
+    }
+
+    bool operator!=(const Iterator<E>& targetIter) const {
+        return curNode != targetIter.curNode;
+    }
 
     Iterator<E> &operator++() {
         curNode = curNode->next;

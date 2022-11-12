@@ -20,6 +20,6 @@ add_executable(
         src/main/queue/LinkedDeque.h src/test/queue/LinkedDequeTest.h src/main/exception/DequeEmpty.h
         src/main/stack/DequeStack.h src/test/stack/DequeStackTest.h
         src/main/queue/ArrayQueue.h src/main/exception/QueueFull.h src/test/queue/ArrayQueueTest.h
-        src/main/tree/Tree.h src/test/tree/TreeTest.h src/main/tree/Position.h
+        src/main/tree/Tree.h src/test/tree/TreeTest.h src/main/tree/Position.h src/main/tree/TreeHelper.h
 )
 
