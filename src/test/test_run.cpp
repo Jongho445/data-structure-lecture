@@ -18,7 +18,8 @@
 #include "adt/ArrayVectorTest.h"
 #include "adt/NodeListTest.h"
 
-#include "tree/TreeTest.h"
+#include "tree/GeneralTreeTest.h"
+#include "tree/BinaryTreeTest.h"
 
 int main() {
 //    GameScoresTest::run();
@@ -39,7 +40,8 @@ int main() {
 //    ArrayVectorTest::run();
 //    NodeListTest::run();
 
-    TreeTest::run();
+//    GeneralTreeTest::run();
+    BinaryTreeTest::run();
 
     return EXIT_SUCCESS;
 }

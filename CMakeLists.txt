@@ -20,7 +20,7 @@ add_executable(
         src/main/queue/LinkedDeque.h src/test/queue/LinkedDequeTest.h src/main/exception/DequeEmpty.h
         src/main/stack/DequeStack.h src/test/stack/DequeStackTest.h
         src/main/queue/ArrayQueue.h src/main/exception/QueueFull.h src/test/queue/ArrayQueueTest.h
-        src/main/tree/general/Tree.h src/test/tree/TreeTest.h src/main/tree/general/Position.h src/main/tree/general/TreeHelper.h src/main/tree/general/Node.h
-        src/main/tree/binary/LinkedBinaryTree.h
+        src/main/tree/general/GeneralTree.h src/test/tree/GeneralTreeTest.h src/main/tree/general/GeneralPosition.h src/main/tree/general/GeneralTreeHelper.h src/main/tree/general/GeneralNode.h
+        src/main/tree/binary/LinkedBinaryTree.h src/main/tree/binary/BinaryNode.h src/main/tree/binary/BinaryPosition.h src/test/tree/BinaryTreeTest.h
 )
 
