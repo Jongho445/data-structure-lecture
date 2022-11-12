@@ -1,0 +1,8 @@
+#ifndef DATA_STRUCTURE_LECTURE_NODE_H
+#define DATA_STRUCTURE_LECTURE_NODE_H
+
+class Node {
+public:
+};
+
+#endif //DATA_STRUCTURE_LECTURE_NODE_H

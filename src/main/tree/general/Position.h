@@ -1,7 +1,7 @@
 #ifndef DATA_STRUCTURE_LECTURE_POSITION_H
 #define DATA_STRUCTURE_LECTURE_POSITION_H
 
-#include "../adt/node_list/NodeList.h"
+#include "../../adt/node_list/NodeList.h"
 
 using namespace std;
 

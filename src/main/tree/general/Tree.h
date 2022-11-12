@@ -3,7 +3,7 @@
 
 #include "Position.h"
 #include "TreeHelper.h"
-#include "../adt/node_list/NodeList.h"
+#include "../../adt/node_list/NodeList.h"
 
 using namespace std;
 

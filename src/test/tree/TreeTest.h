@@ -2,8 +2,8 @@
 #define DATA_STRUCTURE_LECTURE_TREETEST_H
 
 #include "string"
-#include "../../main/tree/Tree.h"
-#include "../../main/tree/TreeHelper.h"
+#include "../../main/tree/general/Tree.h"
+#include "../../main/tree/general/TreeHelper.h"
 
 using namespace std;
 
