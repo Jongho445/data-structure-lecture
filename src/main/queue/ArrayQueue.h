@@ -24,7 +24,7 @@ public:
 
     const E& front() const throw(QueueEmpty) {
         if (empty()) {
-            throw QueueEmpty("front of empty queue");
+            throw QueueEmpty("front of isEmpty queue");
         }
 
         return arr[head];
@@ -43,7 +43,7 @@ public:
 
     void dequeue() throw(QueueEmpty) {
         if (empty()) {
-            throw QueueEmpty("dequeue of empty queue");
+            throw QueueEmpty("dequeue of isEmpty queue");
         }
 
         head = (head + 1) % capacity;

@@ -14,7 +14,7 @@ public:
     GeneralNode(): parent(nullptr), children(new NodeList<GeneralNode<E>*>()) {}
     GeneralNode(E elem, GeneralNode<E> *parent): elem(elem), parent(parent), children(new NodeList<GeneralNode<E>*>()) {}
 
-    const E &getElem() const {
+    E getElem() const {
         return elem;
     }
 

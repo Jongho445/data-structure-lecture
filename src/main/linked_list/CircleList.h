@@ -14,13 +14,13 @@ public:
         }
     }
 
-    const E& front() const { return cursor->next->elem; }
-    const E& back() const { return cursor->elem; }
+    E front() const { return cursor->next->elem; }
+    E back() const { return cursor->elem; }
     bool empty() const { return cursor == nullptr; }
 
     void advance() { cursor = cursor->next; }
 
-    void add(const E& elem) {
+    void add(E elem) {
         SingleNode<E> *newNode = new SingleNode<E>;
         newNode->elem = elem;
 

@@ -18,7 +18,7 @@ public:
 
     const E& top() const throw(StackEmpty) {
         if (empty()) {
-            throw StackEmpty("top of empty stack");
+            throw StackEmpty("top of isEmpty stack");
         }
 
         return deque.front();
@@ -30,7 +30,7 @@ public:
 
     void pop() throw(StackEmpty) {
         if (empty()) {
-            throw StackEmpty("pop of empty stack");
+            throw StackEmpty("pop of isEmpty stack");
         }
 
         deque.removeFront();

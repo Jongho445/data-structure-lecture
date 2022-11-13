@@ -25,11 +25,11 @@ public:
     }
 
     bool empty() const { return header->next == trailer; }
-    const E& front() const { return header->next->elem; }
-    const E& back() const { return trailer->prev->elem; }
+    E front() const { return header->next->elem; }
+    E back() const { return trailer->prev->elem; }
 
-    void addFront(const E &elem) { add(header->next, elem); }
-    void addBack(const E &elem) { add(trailer, elem); }
+    void addFront(E elem) { add(header->next, elem); }
+    void addBack(E elem) { add(trailer, elem); }
     void removeFront() { remove(header->next); }
     void removeBack() { remove(trailer->prev); }
 
@@ -68,7 +68,7 @@ private:
 
     friend class DoublyLinkedListTest;
 protected:
-    void add(DoubleNode<E> *nextNode, const E &elem) {
+    void add(DoubleNode<E> *nextNode, E elem) {
         DoubleNode<E> *prevNode = nextNode->prev;
 
         DoubleNode<E> *newNode = new DoubleNode<E>(elem, prevNode, nextNode);

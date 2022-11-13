@@ -29,7 +29,7 @@ public:
 
     void removeFront() throw(DequeEmpty) {
         if (empty()) {
-            throw DequeEmpty("removeFront of empty deque");
+            throw DequeEmpty("removeFront of isEmpty deque");
         }
 
         linkedList.removeFront();
@@ -38,7 +38,7 @@ public:
 
     void removeBack() throw(DequeEmpty) {
         if (empty()) {
-            throw DequeEmpty("removeBack of empty deque");
+            throw DequeEmpty("removeBack of isEmpty deque");
         }
 
         linkedList.removeBack();

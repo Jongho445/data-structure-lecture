@@ -7,21 +7,33 @@
 
 template <typename E>
 class LinkedBinaryTree {
+private:
+    BinaryNode<E> *root;
+    int length;
 public:
     LinkedBinaryTree(): root(new BinaryNode<E>(nullptr)), length(0) {}
+    ~LinkedBinaryTree() {
+        NodeList<BinaryPosition<E>> *positions = getPositions();
+        for (Iterator<BinaryPosition<E>> iter = positions->begin(); iter != positions->end(); ++iter) {
+            BinaryNode<E> *node = (*iter).getNode();
+            delete node;
+        }
+
+        delete positions;
+    }
 
     int getLength() { return length; }
     bool isEmpty() { return length == 0; }
-    BinaryPosition<E> *getRoot() { return new BinaryPosition<E>(root); }
+    BinaryPosition<E> getRoot() { return BinaryPosition<E>(root); }
 
-    BinaryPosition<E> *removeAboveExternal(BinaryPosition<E> *leaf) {
-        if (!leaf->isExternal()) {
-            return nullptr;
+    BinaryPosition<E> removeAboveExternal(BinaryPosition<E> leaf) {
+        if (!leaf.isExternal()) {
+            return BinaryPosition<E>(nullptr);
         }
 
-        BinaryNode<E>* target = leaf->getNode();
-        BinaryNode<E>* parent = target->getParent();
-        BinaryNode<E>* sibling = (target == parent->getLeft() ? parent->getRight() : parent->getLeft());
+        BinaryNode<E> *target = leaf.getNode();
+        BinaryNode<E> *parent = target->getParent();
+        BinaryNode<E> *sibling = (target == parent->getLeft() ? parent->getRight() : parent->getLeft());
 
         if (parent == root) {
             root = sibling;
@@ -41,54 +53,53 @@ public:
 
         length -= 2;
 
-        return new BinaryPosition<E>(sibling);
+        return BinaryPosition<E>(sibling);
     }
 
     void addNode(E elem) {
-        BinaryPosition<E> *target = getTargetPosition(elem, getRoot());
-        target->getNode()->setElem(elem);
+        BinaryPosition<E> target = getTargetPosition(elem, getRoot());
+        target.getNode()->setElem(elem);
         length++;
     }
 
-    BinaryPosition<E> *getTargetPosition(E newElem, BinaryPosition<E> *cur) {
-        if (cur->isEmpty()) {
+    BinaryPosition<E> getTargetPosition(E newElem, BinaryPosition<E> cur) {
+        if (cur.isEmpty()) {
             return cur;
         }
 
-        if (newElem <= **cur) {
-            if (cur->getLeft() == nullptr) {
-                cur->getNode()->addLeftEmptyNode();
+        if (newElem <= *cur) {
+            if (cur.getLeft().getNode() == nullptr) {
+                cur.getNode()->addLeftEmptyNode();
             }
-            return getTargetPosition(newElem, cur->getLeft());
+            return getTargetPosition(newElem, cur.getLeft());
         } else {
-            if (cur->getRight() == nullptr) {
-                cur->getNode()->addRightEmptyNode();
+            if (cur.getRight().getNode() == nullptr) {
+                cur.getNode()->addRightEmptyNode();
             }
-            return getTargetPosition(newElem, cur->getRight());
+            return getTargetPosition(newElem, cur.getRight());
         }
     }
 
-    void printTree(BinaryPosition<E> *position) {
-        if (position == nullptr) {
+    void printTree(BinaryPosition<E> position) {
+        if (position.getNode() == nullptr) {
             return;
         }
 
-        printTree(position->getLeft());
-        cout << **position;
+        printTree(position.getLeft());
+        cout << *position;
         cout << " ";
-        printTree(position->getRight());
+        printTree(position.getRight());
     }
 
-    NodeList<BinaryPosition<E>*> *getPositions() {
-        NodeList<BinaryPosition<E> *> *positions = new NodeList<BinaryPosition<E> *>();
-
+    NodeList<BinaryPosition<E>> *getPositions() {
+        NodeList<BinaryPosition<E>> *positions = new NodeList<BinaryPosition<E>>();
         pushPreorder(root, positions);
 
         return positions;
     }
 
-    void pushPreorder(BinaryNode<E> *node, NodeList<BinaryPosition<E>*> *positions) {
-        positions->insertBack(new BinaryPosition<E>(node));
+    void pushPreorder(BinaryNode<E> *node, NodeList<BinaryPosition<E>> *positions) {
+        positions->insertBack(BinaryPosition<E>(node));
 
         if (node->getLeft() != nullptr) {
             pushPreorder(node->getLeft(), positions);
@@ -98,9 +109,6 @@ public:
             pushPreorder(node->getRight(), positions);
         }
     }
-private:
-    BinaryNode<E> *root;
-    int length;
 };
 
 #endif //DATA_STRUCTURE_LECTURE_LINKEDBINARYTREE_H

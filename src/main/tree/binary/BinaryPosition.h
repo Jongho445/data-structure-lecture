@@ -12,7 +12,7 @@ public:
     BinaryPosition(): node(nullptr) {}
     BinaryPosition(BinaryNode<E> *node): node(node) {}
 
-    const E &operator*() const { return node->getElem(); }
+    E operator*() const { return node->getElem(); }
 
     bool isRoot() const { return node->getParent() == nullptr; }
     bool isExternal() const { return node->getLeft() == nullptr && node->getRight() == nullptr; }
@@ -21,32 +21,9 @@ public:
 
     BinaryNode<E> *getNode() { return node; }
 
-    BinaryPosition *getParent() {
-        BinaryNode<E> *parentNode = node->getParent();
-        if (parentNode == nullptr) {
-            return nullptr;
-        }
-
-        return new BinaryPosition<E>(parentNode);
-    }
-
-    BinaryPosition *getLeft() {
-        BinaryNode<E> *leftNode = node->getLeft();
-        if (leftNode == nullptr) {
-            return nullptr;
-        }
-
-        return new BinaryPosition<E>(leftNode);
-    }
-
-    BinaryPosition *getRight() {
-        BinaryNode<E> *rightNode = node->getRight();
-        if (rightNode == nullptr) {
-            return nullptr;
-        }
-
-        return new BinaryPosition<E>(rightNode);
-    }
+    BinaryPosition getParent() { return BinaryPosition<E>(node->getParent()); }
+    BinaryPosition getLeft() { return BinaryPosition<E>(node->getLeft()); }
+    BinaryPosition getRight() { return BinaryPosition<E>(node->getRight()); }
 };
 
 #endif //DATA_STRUCTURE_LECTURE_BINARYPOSITION_H

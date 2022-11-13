@@ -27,7 +27,7 @@ public:
 
     bool isEmpty() { return empty; }
 
-    const E &getElem() const { return elem; }
+    E getElem() const { return elem; }
     BinaryNode<E> *getParent() const { return parent; }
     BinaryNode<E> *getLeft() const { return left; }
     BinaryNode<E> *getRight() const { return right; }

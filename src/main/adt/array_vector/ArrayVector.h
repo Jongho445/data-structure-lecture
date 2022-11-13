@@ -56,7 +56,7 @@ public:
             arr[j + 1] = arr[j];
         }
 
-        arr[idx] = elem; // put in empty slot
+        arr[idx] = elem; // put in isEmpty slot
         length++; // one more element
     }
 private:

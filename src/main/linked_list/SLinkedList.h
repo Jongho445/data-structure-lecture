@@ -16,9 +16,9 @@ public:
     };
 
     bool empty() const { return head == nullptr; };
-    const E& front() const { return head->elem; };
+    E front() const { return head->elem; };
 
-    void addFront(const E& elem) {
+    void addFront(E elem) {
         SingleNode<E>* newNode = new SingleNode<E>;
 
         newNode->elem = elem;

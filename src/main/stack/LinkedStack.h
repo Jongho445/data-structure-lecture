@@ -18,7 +18,7 @@ public:
 
     const E& top() const throw(StackEmpty) {
         if (empty()) {
-            throw StackEmpty("Top of empty stack");
+            throw StackEmpty("Top of isEmpty stack");
         }
 
         return linkedList.front();
@@ -31,7 +31,7 @@ public:
 
     void pop() throw(StackEmpty) {
         if (empty()) {
-            throw StackEmpty("Pop from empty stack");
+            throw StackEmpty("Pop from isEmpty stack");
         }
 
         linkedList.removeFront();

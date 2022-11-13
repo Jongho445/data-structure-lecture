@@ -18,7 +18,7 @@ public:
 
     const E& front() const throw(QueueEmpty) {
         if (empty()) {
-            throw QueueEmpty("front of empty queue");
+            throw QueueEmpty("front of isEmpty queue");
         }
 
         return linkedList.front();
@@ -32,7 +32,7 @@ public:
 
     void dequeue() throw(QueueEmpty) {
         if (empty()) {
-            throw QueueEmpty("dequeue of empty queue");
+            throw QueueEmpty("dequeue of isEmpty queue");
         }
 
         linkedList.remove();

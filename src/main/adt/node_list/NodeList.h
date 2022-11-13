@@ -21,6 +21,15 @@ public:
         length = 0;
     }
 
+    ~NodeList() {
+        while(!empty()) {
+            eraseFront();
+        }
+
+        delete header;
+        delete trailer;
+    }
+
     int size() const { return length; }
     bool empty() const { return length == 0; }
 
@@ -30,7 +39,7 @@ public:
     Iterator<E> begin() const { return Iterator<E>(header->next); }
     Iterator<E> end() const { return Iterator<E>(trailer); }
 
-    void insert(const Iterator<E>& targetIter, const E& elem) {
+    void insert(Iterator<E> targetIter, E elem) {
         DoubleNode<E> *nextNode = targetIter.getCurNode();
         DoubleNode<E> *prevNode = nextNode->prev;
 
@@ -42,7 +51,7 @@ public:
         length++;
     }
 
-    void erase(const Iterator<E>& targetIter) {
+    void erase(Iterator<E> targetIter) {
         DoubleNode<E> *targetNode = targetIter.getCurNode();
 
         DoubleNode<E> *nextNode = targetNode->next;
@@ -56,8 +65,8 @@ public:
         length--;
     }
 
-    void insertFront(const E& elem) { insert(begin(), elem); }
-    void insertBack(const E& elem) { insert(end(), elem); }
+    void insertFront(E elem) { insert(begin(), elem); }
+    void insertBack(E elem) { insert(end(), elem); }
 
     void eraseFront() { erase(begin()); }
     void eraseBack() { erase(--end()); }
