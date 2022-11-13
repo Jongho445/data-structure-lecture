@@ -2,17 +2,17 @@
 #define DATA_STRUCTURE_LECTURE_GENERALNODE_H
 
 
-#include "../../adt/node_list/NodeList.h"
+#include "vector"
 
 template <typename E>
 class GeneralNode {
 private:
     E elem;
     GeneralNode<E> *parent;
-    NodeList<GeneralNode<E>*> *children;
+    vector<GeneralNode<E>*> *children;
 public:
-    GeneralNode(): parent(nullptr), children(new NodeList<GeneralNode<E>*>()) {}
-    GeneralNode(E elem, GeneralNode<E> *parent): elem(elem), parent(parent), children(new NodeList<GeneralNode<E>*>()) {}
+    GeneralNode(): parent(nullptr), children(new vector<GeneralNode<E>*>()) {}
+    GeneralNode(E elem, GeneralNode<E> *parent): elem(elem), parent(parent), children(new vector<GeneralNode<E>*>()) {}
 
     E getElem() const {
         return elem;
@@ -22,14 +22,14 @@ public:
         return parent;
     }
 
-    NodeList<GeneralNode<E>*> *getChildren() const {
+    vector<GeneralNode<E>*> *getChildren() const {
         return children;
     }
 
     GeneralNode<E> *addNode(E elem) {
         GeneralNode<E> *newNode = new GeneralNode<E>(elem, this);
 
-        children->insertBack(newNode);
+        children->push_back(newNode);
 
         return newNode;
     }

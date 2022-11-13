@@ -3,6 +3,7 @@
 
 
 #include "iostream"
+#include "vector"
 #include "../../main/tree/binary/LinkedBinaryTree.h"
 #include "../../main/tree/binary/BinaryNode.h"
 
@@ -25,16 +26,13 @@ public:
         tree.printTree(tree.getRoot());
         cout << endl;
 
-        NodeList<BinaryPosition<int>> *positions = tree.getPositions();
-        Iterator<BinaryPosition<int>> iter = positions->begin();
-        while (iter != positions->end()) {
+        vector<BinaryPosition<int>> *positions = tree.getPositions();
+        typedef vector<BinaryPosition<int>>::iterator Iterator;
+        for (Iterator iter = positions->begin(); iter != positions->end(); ++iter) {
             cout << **iter;
             cout << " ";
-            ++iter;
         }
         cout << endl;
-
-        delete positions;
     }
 
     static LinkedBinaryTree<int> createTree() {

@@ -2,6 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_LINKEDBINARYTREE_H
 
 
+#include "vector"
 #include "BinaryNode.h"
 #include "BinaryPosition.h"
 
@@ -13,13 +14,13 @@ private:
 public:
     LinkedBinaryTree(): root(new BinaryNode<E>(nullptr)), length(0) {}
     ~LinkedBinaryTree() {
-        NodeList<BinaryPosition<E>> *positions = getPositions();
-        for (Iterator<BinaryPosition<E>> iter = positions->begin(); iter != positions->end(); ++iter) {
+        vector<BinaryPosition<int>> *positions = getPositions();
+
+        typename vector<BinaryPosition<E>>::iterator iter;
+        for (iter = positions->begin(); iter != positions->end(); ++iter) {
             BinaryNode<E> *node = (*iter).getNode();
             delete node;
         }
-
-        delete positions;
     }
 
     int getLength() { return length; }
@@ -91,15 +92,15 @@ public:
         printTree(position.getRight());
     }
 
-    NodeList<BinaryPosition<E>> *getPositions() {
-        NodeList<BinaryPosition<E>> *positions = new NodeList<BinaryPosition<E>>();
+    vector<BinaryPosition<E>> *getPositions() {
+        vector<BinaryPosition<E>> *positions = new vector<BinaryPosition<E>>();
         pushPreorder(root, positions);
 
         return positions;
     }
 
-    void pushPreorder(BinaryNode<E> *node, NodeList<BinaryPosition<E>> *positions) {
-        positions->insertBack(BinaryPosition<E>(node));
+    void pushPreorder(BinaryNode<E> *node, vector<BinaryPosition<E>> *positions) {
+        positions->push_back(BinaryPosition<E>(node));
 
         if (node->getLeft() != nullptr) {
             pushPreorder(node->getLeft(), positions);

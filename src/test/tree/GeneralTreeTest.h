@@ -31,11 +31,12 @@ public:
         tree.addNode("2nd", root);
         tree.addNode("3rd", root);
 
-        Iterator<GeneralPosition<string>> iter = root.getChildren()->begin();
+        typename vector<GeneralPosition<string>>::iterator iter;
+        iter = root.getChildren()->begin();
+
         GeneralPosition<string> secondPosition = *iter;
         tree.addNode("4th", secondPosition);
         tree.addNode("5th", secondPosition);
-
 
         GeneralPosition<string> thirdPosition = *(++iter);
         tree.addNode("6th", thirdPosition);

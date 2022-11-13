@@ -1,6 +1,7 @@
 #ifndef DATA_STRUCTURE_LECTURE_GENERALTREEHELPER_H
 #define DATA_STRUCTURE_LECTURE_GENERALTREEHELPER_H
 
+#include "vector"
 #include "GeneralPosition.h"
 
 class GeneralTreeHelper {
@@ -29,8 +30,9 @@ public:
         }
 
         int height = 0;
-        NodeList<GeneralPosition<E>> *children = position.getChildren();
-        for (Iterator<GeneralPosition<E>> iter = children->begin(); iter != children->end(); ++iter) {
+        vector<GeneralPosition<E>> *children = position.getChildren();
+        typename vector<GeneralPosition<E>>::iterator iter;
+        for (iter = children->begin(); iter != children->end(); ++iter) {
             height = max(height, getHeightOfPosition(*iter));
         }
 
@@ -42,8 +44,9 @@ public:
         int size = getSize(position);
 
         if (!position.isExternal()) {
-            NodeList<GeneralPosition<E>> *children = position.getChildren();
-            for (Iterator<GeneralPosition<E>> iter = children->begin(); iter != children->end(); ++iter) {
+            vector<GeneralPosition<E>> *children = position.getChildren();
+            typename vector<GeneralPosition<E>>::iterator iter;
+            for (iter = children->begin(); iter != children->end(); ++iter) {
                 size += diskSpace(*iter);
             }
             cout << getName(position) << " folder: " << size << endl;
