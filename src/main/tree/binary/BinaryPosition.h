@@ -17,8 +17,6 @@ public:
     bool isRoot() const { return node->getParent() == nullptr; }
     bool isExternal() const { return node->getLeft() == nullptr && node->getRight() == nullptr; }
 
-    bool isEmpty() { return node->isEmpty(); }
-
     BinaryNode<E> *getNode() { return node; }
 
     BinaryPosition getParent() { return BinaryPosition<E>(node->getParent()); }

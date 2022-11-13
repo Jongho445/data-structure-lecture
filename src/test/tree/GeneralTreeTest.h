@@ -2,10 +2,10 @@
 #define DATA_STRUCTURE_LECTURE_GENERALTREETEST_H
 
 #include "string"
+#include "../../main/tree/Traversal.h"
 #include "../../main/tree/general/GeneralTree.h"
 #include "../../main/tree/general/GeneralTreeHelper.h"
 #include "../../main/tree/general/GeneralPosition.h"
-#include "../../main/tree/Traversal.h"
 
 using namespace std;
 

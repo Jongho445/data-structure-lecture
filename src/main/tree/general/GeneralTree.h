@@ -9,7 +9,7 @@
 
 template <typename E>
 class GeneralTree {
-private:
+protected:
     GeneralNode<E> *root;
     int length;
 public:
@@ -17,7 +17,7 @@ public:
     GeneralTree(E elem): root(new GeneralNode<E>(elem, nullptr)), length(1) {}
 
     ~GeneralTree() {
-        vector<GeneralPosition<E>> *positions = getPositions();
+        vector<GeneralPosition<E>> *positions = getPositions(Traversal::PREORDER);
         typename vector<GeneralPosition<E>>::iterator iter;
         for (iter = positions->begin(); iter != positions->end(); ++iter) {
             GeneralNode<E> *node = (*iter).getNode();
@@ -48,7 +48,7 @@ public:
     int getHeight() {
         int height = 0;
 
-        vector<GeneralPosition<E>> *positions = getPositions();
+        vector<GeneralPosition<E>> *positions = getPositions(Traversal::PREORDER);
         typename vector<GeneralPosition<E>>::iterator iter;
         for (iter = positions->begin(); iter != positions->end(); ++iter) {
             if ((*iter).isExternal()) {
@@ -58,13 +58,6 @@ public:
 
         return height;
     }
-
-    vector<GeneralPosition<E>> *getPositions() {
-        vector<GeneralPosition<E>> *positions = new vector<GeneralPosition<E>>();
-        pushPreorder(getRoot(), positions);
-
-        return positions;
-    };
 
     vector<GeneralPosition<E>> *getPositions(Traversal traversal) {
         vector<GeneralPosition<E>> *positions = new vector<GeneralPosition<E>>();
@@ -77,6 +70,19 @@ public:
         return positions;
     };
 
+    void printTree(Traversal traversal) {
+        vector<GeneralPosition<E>> *positions = getPositions(traversal);
+
+        typename vector<GeneralPosition<E>>::iterator iter;
+        for (iter = positions->begin(); iter != positions->end(); ++iter) {
+            cout << **iter;
+            cout << " ";
+        }
+        cout << endl;
+
+        delete positions;
+    }
+private:
     void pushPreorder(GeneralPosition<E> target, vector<GeneralPosition<E>> *positions) {
         positions->push_back(target);
 
@@ -95,19 +101,6 @@ public:
         }
 
         positions->push_back(target);
-    }
-
-    void printTree(Traversal traversal) {
-        vector<GeneralPosition<E>> *positions = getPositions(traversal);
-
-        typename vector<GeneralPosition<E>>::iterator iter;
-        for (iter = positions->begin(); iter != positions->end(); ++iter) {
-            cout << **iter;
-            cout << " ";
-        }
-        cout << endl;
-
-        delete positions;
     }
 };
 
