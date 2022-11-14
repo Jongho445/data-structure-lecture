@@ -14,7 +14,7 @@ private:
 public:
     HeapPriorityQueue(): tree(VectorCompleteTree<E>()) {}
 
-    int getLength() const { return tree.getLength(); }
+    int getLength() const { return tree.getLastIdx(); }
     bool isEmpty() const { return getLength() == 0; }
 
     E min() { return *(tree.getRoot()); }
@@ -23,7 +23,7 @@ public:
         tree.addLast(elem);
         Position target = tree.getLast();
         while (!tree.isRoot(target)) {
-            Position parent = tree.getParent(target);
+            Position parent = tree.getParentOf(target);
 
             // 기준 노드가 부모 노드보다 크면 heapify 종료, 작으면 swap
             if (isGraterThen(*target, *parent)) {
@@ -52,12 +52,14 @@ public:
         Position target = tree.getRoot();
         tree.swap(target, tree.getLast());
         tree.removeLast();
-        
+
+        // 기준 노드(target)이 external 노드가 될 때까지 반복
+        // (complete tree이므로 left 노드만 존재해도 internal 노드이다)
         while (tree.hasLeft(target)) {
             // 자식 노드가 왼쪽 노드인지 오른쪽 노드인지 선택
-            Position child = tree.getLeft(target);
-            if (tree.hasRight(target) && !isGraterThen(*(tree.getRight(target)), *child)) {
-                child = tree.getRight(target);
+            Position child = tree.getLeftOf(target);
+            if (tree.hasRight(target) && !isGraterThen(*(tree.getRightOf(target)), *child)) {
+                child = tree.getRightOf(target);
             }
 
             // 자식 노드가 부모 노드보다 크면 종료, 작으면 swap

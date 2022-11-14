@@ -16,7 +16,6 @@
 #include "adt/NodeListTest.h"
 
 #include "tree/GeneralTreeTest.h"
-#include "tree/LinkedBinarySearchTreeTest.h"
 #include "heap/HeapPriorityQueueTest.h"
 #include "search_tree/BinarySearchTreeTest.h"
 
@@ -38,8 +37,7 @@ int main() {
 //    NodeListTest::run();
 //
 //    GeneralTreeTest::run();
-//    LinkedBinarySearchTreeTest::run();
-    HeapPriorityQueueTest::run();
+//    HeapPriorityQueueTest::run();
     BinarySearchTreeTest::run();
 
     return EXIT_SUCCESS;

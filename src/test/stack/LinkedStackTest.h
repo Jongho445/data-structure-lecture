@@ -10,16 +10,16 @@ class LinkedStackTest {
 public:
     static void run() {
         // case string
-        LinkedStack<string> B; // B = [], getLength = 0
+        LinkedStack<string> B; // B = [], getLastIdx = 0
 
-        B.push("Bob"); // B = [Bob*], getLength = 1
-        B.push("Alice"); // B = [Bob, Alice*], getLength = 2
+        B.push("Bob"); // B = [Bob*], getLastIdx = 1
+        B.push("Alice"); // B = [Bob, Alice*], getLastIdx = 2
         cout << B.top() << endl; // outputs: Alice
 
         B.pop(); // B = [Bob*]
         cout << B.top() << endl; // outputs: Bob
 
-        B.push("Eve"); // B = [Bob, Eve*], getLength = 2
+        B.push("Eve"); // B = [Bob, Eve*], getLastIdx = 2
         cout << B.top() << endl; // outputs: Eve
     }
 };

@@ -14,11 +14,13 @@ private:
     vector<E> list;
 protected:
     Position getPosition(int i) { return list.begin() + i; }
-    int getIdx(Position pos) { return pos - list.begin(); }
+    int getIdxOf(Position pos) { return pos - list.begin(); }
 public:
     VectorCompleteTree(): list(vector<E>(1)) {}
-    
-    int getLength() const {
+
+    // vector complete tree는 맨 앞의 원소를 사용하지 않기에 lastIdx와 length가 같다
+    // (lastIdx == length - 1이 아니라는 말이다)
+    int getLastIdx() const {
         return list.size() - 1;
     }
 
@@ -33,31 +35,37 @@ public:
         *p = temp;
     }
 
-    Position getRoot() { return getPosition(1); }
-    Position getLast() { return getPosition(getLength()); }
-
-    Position getParent(Position pos) {
-        return getPosition(getIdx(pos) / 2);
+    // vector complete tree는 맨 앞의 원소를 사용하지 않기에 rootIdx는 0이 아닌 1이다
+    Position getRoot() {
+        return getPosition(1);
     }
 
-    Position getLeft(Position pos) {
-        return getPosition(2 * getIdx(pos));
+    Position getLast() {
+        return getPosition(getLastIdx());
     }
 
-    Position getRight(Position pos) {
-        return getPosition(2 * getIdx(pos) + 1);
+    Position getParentOf(Position pos) {
+        return getPosition(getIdxOf(pos) / 2);
+    }
+
+    Position getLeftOf(Position pos) {
+        return getPosition(2 * getIdxOf(pos));
+    }
+
+    Position getRightOf(Position pos) {
+        return getPosition(2 * getIdxOf(pos) + 1);
     }
 
     bool hasLeft(Position pos) {
-        return (2 * getIdx(pos)) <= getLength();
+        return (2 * getIdxOf(pos)) <= getLastIdx();
     }
 
     bool hasRight(Position pos) {
-        return ((2 * getIdx(pos)) + 1) <= getLength();
+        return ((2 * getIdxOf(pos)) + 1) <= getLastIdx();
     }
 
     bool isRoot(Position pos) {
-        return getIdx(pos) == 1;
+        return getIdxOf(pos) == 1;
     }
 };
 

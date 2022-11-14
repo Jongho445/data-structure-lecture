@@ -15,12 +15,16 @@ public:
     BinaryPosition(): node(nullptr) {}
     BinaryPosition(Node *node): node(node) {}
 
+    Node *getNode() { return node; }
+
     E operator*() const { return node->getElem(); }
+
+    bool operator==(Position pos) { return node == pos.getNode(); }
+    bool operator!=(Position pos) { return node != pos.getNode(); }
 
     bool isRoot() const { return node->getParent() == nullptr; }
     bool isExternal() const { return node->getLeft() == nullptr && node->getRight() == nullptr; }
-
-    Node *getNode() { return node; }
+    bool isInternal() const { return !isExternal(); }
 
     Position getParent() { return Position(node->getParent()); }
     Position getLeft() { return Position(node->getLeft()); }

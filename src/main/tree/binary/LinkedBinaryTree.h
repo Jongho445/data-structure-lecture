@@ -29,6 +29,20 @@ public:
     int getLength() { return length; }
     bool isEmpty() { return length == 0; }
     Position getRoot() { return Position(root); }
+    
+    void addRoot() {
+        root = new Node();
+        length = 1;
+    }
+    
+    void expandExternal(Position pos) {
+        Node *node = pos.getNode();
+
+        node->addLeftEmptyNode();
+        node->addRightEmptyNode();
+
+        length += 2;
+    }
 
     Position removeAboveExternal(Position leaf) {
         if (!leaf.isExternal()) {

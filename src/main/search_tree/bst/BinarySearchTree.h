@@ -5,40 +5,141 @@
 #include "BinarySearchTreeIterator.h"
 #include "../../tree/binary/BinaryPosition.h"
 #include "../../tree/binary/LinkedBinaryTree.h"
+#include "../../exception/NotExistElement.h"
 
-template <typename E, typename K, typename V>
+template <typename K, typename V>
 class BinarySearchTree {
 private:
-    LinkedBinaryTree<E> tree;
+    typedef BinaryPosition<Entry<K, V>> Position;
+    typedef BinarySearchTreeIterator<K, V> Iterator;
+    typedef LinkedBinaryTree<Entry<K, V>> BinaryTree;
+
+    BinaryTree tree;
     int length;
-
-    typedef BinaryPosition<E> Position;
-    typedef BinarySearchTreeIterator<E> Iterator;
 public:
-    BinarySearchTree() {}
+    BinarySearchTree() : tree(BinaryTree()), length(0) {
+        tree.addRoot();
+        tree.expandExternal(tree.getRoot());
+    }
+    
+    bool isEmpty() { return length == 0; }
+    
+    Iterator begin() {
+        Position pos = getRoot();
 
-    bool isEmpty() {}
+        while (pos.isInternal()) {
+            pos = pos.getLeft();
+        }
 
-    Iterator begin() {}
-    Iterator end() {}
+        return Iterator(pos.getParent());
+    }
 
-    Iterator find(K key, Position pos) {}
+    Iterator end() {
+        return Iterator(tree.getRoot());
+    }
 
-    Iterator insert(K key, V value) {}
+    Iterator find(K key) {
+        Position pos = finder(key, getRoot());
 
-    void erase(K key) {}
+        if (pos.isInternal()) {
+            return Iterator(pos);
+        } else {
+            return end();
+        }
+    }
 
-    void erase(Iterator iter) {}
+    Iterator insert(K key, V value) {
+        Position pos = inserter(key, value);
+
+        return Iterator(pos);
+    }
+
+    void erase(K key) throw(NotExistElement){
+        Position pos = finder(key, getRoot());
+        
+        if (pos.isExternal()) {
+            throw NotExistElement("this key does Not Exist!");
+        }
+        
+        eraser(pos);
+    }
+
+    void erase(Iterator iter) {
+        eraser(iter.getPosition());
+    }
+
+    void printTree() {
+        for (Iterator iter = begin(); iter != end(); ++iter) {
+            cout << *iter;
+            cout << ", ";
+        }
+        cout << endl;
+    }
+
 protected:
-    Position getRoot() {}
+    Position getRoot() {
+        return tree.getRoot().getLeft();
+    }
 
-    Position finder(K key, Position pos) {}
+    Position finder(K key, Position pos) {
+        if (pos.isExternal()) {
+            return pos;
+        }
 
-    Position inserter(K key, V value) {}
+        if (key < pos.operator*().getKey()) {
+            return finder(key, pos.getLeft());
+        } else if (pos.operator*().getKey() < key) {
+            return finder(key, pos.getRight());
+        } else {
+            return pos;
+        }
+    }
 
-    Position eraser(Position pos) {}
+    Position inserter(K key, V value) {
+        Position pos = finder(key, getRoot());
 
-    Position restructure(Position pos) {}
+        while (pos.isInternal()) {
+            pos = finder(key, pos.getRight());
+        }
+
+        pos.getNode()->setElem(Entry<K, V>(key, value));
+//        pos.operator*().setKey(key);
+//        pos.operator*().setValue(value);
+
+        tree.expandExternal(pos);
+        
+        length++;
+        
+        return pos;
+    }
+
+    Position eraser(Position pos) {
+        // 자손 (descendants)
+        Position desc;
+        
+        if (pos.getLeft().isExternal()) {
+            desc = pos.getLeft();
+        } else if (pos.getRight().isExternal()) {
+            desc = pos.getRight();
+        } else {
+            desc = pos.getRight();
+            
+            do {
+                desc = desc.getLeft();
+            } while (desc.isInternal());
+
+            Position parentDesc = desc.getParent();
+
+            Entry<K, V> parentEntry = parentDesc.operator*();
+            pos.getNode()->setElem(parentEntry);
+//            pos.operator*().setKey(parentDesc.operator*().getKey());
+//            pos.operator*().setValue(parentDesc.operator*().getValue());
+        }
+
+        length--;
+
+        return tree.removeAboveExternal(desc);
+    }
 
 };
 
