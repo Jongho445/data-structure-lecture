@@ -9,38 +9,41 @@
 template <typename E>
 class LinkedBinaryTree {
 protected:
-    BinaryNode<E> *root;
+    typedef BinaryNode<E> Node;
+    typedef BinaryPosition<E> Position;
+    typedef typename vector<BinaryPosition<E>>::iterator Iterator;
+
+    Node *root;
     int length;
 public:
     LinkedBinaryTree(): root(new BinaryNode<E>(nullptr)), length(0) {}
     ~LinkedBinaryTree() {
-        vector<BinaryPosition<int>> *positions = getPositions(Traversal::PREORDER);
+        vector<Position> *positions = getPositions(Traversal::PREORDER);
 
-        typename vector<BinaryPosition<E>>::iterator iter;
-        for (iter = positions->begin(); iter != positions->end(); ++iter) {
-            BinaryNode<E> *node = (*iter).getNode();
+        for (Iterator iter = positions->begin(); iter != positions->end(); ++iter) {
+            Node *node = (*iter).getNode();
             delete node;
         }
     }
 
     int getLength() { return length; }
     bool isEmpty() { return length == 0; }
-    BinaryPosition<E> getRoot() { return BinaryPosition<E>(root); }
+    Position getRoot() { return Position(root); }
 
-    BinaryPosition<E> removeAboveExternal(BinaryPosition<E> leaf) {
+    Position removeAboveExternal(Position leaf) {
         if (!leaf.isExternal()) {
-            return BinaryPosition<E>(nullptr);
+            return Position(nullptr);
         }
 
-        BinaryNode<E> *target = leaf.getNode();
-        BinaryNode<E> *parent = target->getParent();
-        BinaryNode<E> *sibling = (target == parent->getLeft() ? parent->getRight() : parent->getLeft());
+        Node *target = leaf.getNode();
+        Node *parent = target->getParent();
+        Node *sibling = (target == parent->getLeft() ? parent->getRight() : parent->getLeft());
 
         if (parent == root) {
             root = sibling;
             sibling->setParent(nullptr);
         } else {
-            BinaryNode<E>* grandParent = parent->getParent();
+            Node *grandParent = parent->getParent();
             if (parent == grandParent->getLeft()) {
                 grandParent->setLeft(sibling);
             } else {
@@ -54,14 +57,13 @@ public:
 
         length -= 2;
 
-        return BinaryPosition<E>(sibling);
+        return Position(sibling);
     }
 
     void printTree(Traversal traversal) {
-        vector<BinaryPosition<E>> *positions = getPositions(traversal);
+        vector<Position> *positions = getPositions(traversal);
 
-        typename vector<BinaryPosition<E>>::iterator iter;
-        for (iter = positions->begin(); iter != positions->end(); ++iter) {
+        for (Iterator iter = positions->begin(); iter != positions->end(); ++iter) {
             cout << **iter;
             cout << " ";
         }
@@ -70,8 +72,8 @@ public:
         delete positions;
     }
 
-    vector<BinaryPosition<E>> *getPositions(Traversal traversal) {
-        vector<BinaryPosition<E>> *positions = new vector<BinaryPosition<E>>();
+    vector<Position> *getPositions(Traversal traversal) {
+        vector<Position> *positions = new vector<Position>();
         switch (traversal) {
             case PREORDER: pushPreorder(getRoot(), positions); break;
             case POSTORDER: pushPostorder(getRoot(), positions); break;
@@ -81,7 +83,7 @@ public:
         return positions;
     }
 private:
-    void pushPreorder(BinaryPosition<E> target, vector<BinaryPosition<E>> *positions) {
+    void pushPreorder(Position target, vector<Position> *positions) {
         positions->push_back(target);
 
         if (target.getNode()->getLeft() != nullptr) {
@@ -93,7 +95,7 @@ private:
         }
     }
 
-    void pushPostorder(BinaryPosition<E> target, vector<BinaryPosition<E>> *positions) {
+    void pushPostorder(Position target, vector<Position> *positions) {
         if (target.getNode()->getLeft() != nullptr) {
             pushPostorder(target.getLeft(), positions);
         }
@@ -105,7 +107,7 @@ private:
         positions->push_back(target);
     }
 
-    void pushInorder(BinaryPosition<E> target, vector<BinaryPosition<E>> *positions) {
+    void pushInorder(Position target, vector<Position> *positions) {
         if (target.getNode()->getLeft() != nullptr) {
             pushInorder(target.getLeft(), positions);
         }

@@ -8,6 +8,8 @@
 template <typename E>
 class HeapPriorityQueue {
 private:
+    typedef typename vector<E>::iterator Position;
+
     VectorCompleteTree<E> tree;
 public:
     HeapPriorityQueue(): tree(VectorCompleteTree<E>()) {}
@@ -19,9 +21,9 @@ public:
 
     void insert(E elem) {
         tree.addLast(elem);
-        typename vector<E>::iterator target = tree.getLast();
+        Position target = tree.getLast();
         while (!tree.isRoot(target)) {
-            typename vector<E>::iterator parent = tree.getParent(target);
+            Position parent = tree.getParent(target);
 
             // 기준 노드가 부모 노드보다 크면 heapify 종료, 작으면 swap
             if (isGraterThen(*target, *parent)) {
@@ -47,13 +49,13 @@ public:
             return;
         }
 
-        typename vector<E>::iterator target = tree.getRoot();
+        Position target = tree.getRoot();
         tree.swap(target, tree.getLast());
         tree.removeLast();
         
         while (tree.hasLeft(target)) {
             // 자식 노드가 왼쪽 노드인지 오른쪽 노드인지 선택
-            typename vector<E>::iterator child = tree.getLeft(target);
+            Position child = tree.getLeft(target);
             if (tree.hasRight(target) && !isGraterThen(*(tree.getRight(target)), *child)) {
                 child = tree.getRight(target);
             }
@@ -70,7 +72,7 @@ public:
 
     void printQueue() {
         vector<E> list = tree.getList();
-        typename vector<E>::iterator iter = list.begin();
+        Position iter = list.begin();
         ++iter;
 
         for (iter; iter != list.end(); ++iter) {

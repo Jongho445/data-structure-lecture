@@ -24,5 +24,6 @@ add_executable(
         src/main/tree/binary/LinkedBinaryTree.h src/main/tree/binary/BinaryNode.h src/main/tree/binary/BinaryPosition.h src/test/tree/LinkedBinarySearchTreeTest.h src/main/tree/Traversal.h
         src/main/tree/binary/LinkedBinarySearchTree.h
         src/main/heap/VectorCompleteTree.h src/main/heap/HeapPriorityQueue.h src/test/heap/HeapPriorityQueueTest.h
+        src/main/search_tree/bst/Entry.h src/main/search_tree/bst/BinarySearchTree.h src/test/search_tree/BinarySearchTreeTest.h src/main/search_tree/bst/BinarySearchTreeIterator.h src/main/exception/NotExistElement.h src/main/exception/BoundaryViolation.h
 )
 

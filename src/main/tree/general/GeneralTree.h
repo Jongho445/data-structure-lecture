@@ -10,17 +10,20 @@
 template <typename E>
 class GeneralTree {
 protected:
-    GeneralNode<E> *root;
+    typedef GeneralNode<E> Node;
+    typedef GeneralPosition<E> Position;
+    typedef typename vector<GeneralPosition<E>>::iterator Iterator;
+
+    Node *root;
     int length;
 public:
     GeneralTree(): root(nullptr), length(0) {}
-    GeneralTree(E elem): root(new GeneralNode<E>(elem, nullptr)), length(1) {}
+    GeneralTree(E elem): root(new Node(elem, nullptr)), length(1) {}
 
     ~GeneralTree() {
-        vector<GeneralPosition<E>> *positions = getPositions(Traversal::PREORDER);
-        typename vector<GeneralPosition<E>>::iterator iter;
-        for (iter = positions->begin(); iter != positions->end(); ++iter) {
-            GeneralNode<E> *node = (*iter).getNode();
+        vector<Position> *positions = getPositions(Traversal::PREORDER);
+        for (Iterator iter = positions->begin(); iter != positions->end(); ++iter) {
+            Node *node = (*iter).getNode();
             delete node;
         }
         
@@ -30,17 +33,17 @@ public:
     bool isEmpty() const { return length == 0; };
 
     void addRoot(E elem) {
-        root = new GeneralNode<E>(elem, nullptr);
+        root = new Node(elem, nullptr);
         length++;
     }
 
-    void addNode(E elem, GeneralPosition<E> position) {
+    void addNode(E elem, Position position) {
         position.getNode()->addNode(elem);
         length++;
     }
 
-    GeneralPosition<E> getRoot() const {
-        return GeneralPosition<E>(root);
+    Position getRoot() const {
+        return Position(root);
     };
 
     int getLength() const { return length; };
@@ -48,9 +51,8 @@ public:
     int getHeight() {
         int height = 0;
 
-        vector<GeneralPosition<E>> *positions = getPositions(Traversal::PREORDER);
-        typename vector<GeneralPosition<E>>::iterator iter;
-        for (iter = positions->begin(); iter != positions->end(); ++iter) {
+        vector<Position> *positions = getPositions(Traversal::PREORDER);
+        for (Iterator iter = positions->begin(); iter != positions->end(); ++iter) {
             if ((*iter).isExternal()) {
                 height = GeneralTreeHelper::max(height, GeneralTreeHelper::depth(*iter));
             }
@@ -59,8 +61,8 @@ public:
         return height;
     }
 
-    vector<GeneralPosition<E>> *getPositions(Traversal traversal) {
-        vector<GeneralPosition<E>> *positions = new vector<GeneralPosition<E>>();
+    vector<Position> *getPositions(Traversal traversal) {
+        vector<Position> *positions = new vector<Position>();
         switch (traversal) {
             case PREORDER: pushPreorder(getRoot(), positions); break;
             case POSTORDER: pushPostorder(getRoot(), positions); break;
@@ -71,10 +73,9 @@ public:
     };
 
     void printTree(Traversal traversal) {
-        vector<GeneralPosition<E>> *positions = getPositions(traversal);
+        vector<Position> *positions = getPositions(traversal);
 
-        typename vector<GeneralPosition<E>>::iterator iter;
-        for (iter = positions->begin(); iter != positions->end(); ++iter) {
+        for (Iterator iter = positions->begin(); iter != positions->end(); ++iter) {
             cout << **iter;
             cout << " ";
         }
@@ -83,20 +84,18 @@ public:
         delete positions;
     }
 private:
-    void pushPreorder(GeneralPosition<E> target, vector<GeneralPosition<E>> *positions) {
+    void pushPreorder(Position target, vector<Position> *positions) {
         positions->push_back(target);
 
-        vector<GeneralPosition<E>> *children = target.getChildren();
-        typename vector<GeneralPosition<E>>::iterator iter;
-        for (iter = children->begin(); iter != children->end(); ++iter) {
+        vector<Position> *children = target.getChildren();
+        for (Iterator iter = children->begin(); iter != children->end(); ++iter) {
             pushPreorder(*iter, positions);
         }
     }
 
-    void pushPostorder(GeneralPosition<E> target, vector<GeneralPosition<E>> *positions) {
-        vector<GeneralPosition<E>> *children = target.getChildren();
-        typename vector<GeneralPosition<E>>::iterator iter;
-        for (iter = children->begin(); iter != children->end(); ++iter) {
+    void pushPostorder(Position target, vector<Position> *positions) {
+        vector<Position> *children = target.getChildren();
+        for (Iterator iter = children->begin(); iter != children->end(); ++iter) {
             pushPostorder(*iter, positions);
         }
 

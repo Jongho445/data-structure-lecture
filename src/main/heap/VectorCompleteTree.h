@@ -9,51 +9,55 @@ using namespace std;
 template <typename E>
 class VectorCompleteTree {
 private:
+    typedef typename vector<E>::iterator Position;
+
     vector<E> list;
 protected:
-    typename vector<E>::iterator pos(int i) { return list.begin() + i; }
-    int idx(typename vector<E>::iterator position) { return position - list.begin(); }
+    Position getPosition(int i) { return list.begin() + i; }
+    int getIdx(Position pos) { return pos - list.begin(); }
 public:
     VectorCompleteTree(): list(vector<E>(1)) {}
     
-    int getLength() const { return list.size() - 1; }
+    int getLength() const {
+        return list.size() - 1;
+    }
+
     vector<E> getList() { return list; }
     
     void addLast(E elem) { list.push_back(elem); }
-    
     void removeLast() { list.pop_back(); }
     
-    void swap(typename vector<E>::iterator p, typename vector<E>::iterator q) {
+    void swap(Position p, Position q) {
         E temp = *q;
         *q = *p;
         *p = temp;
     }
 
-    typename vector<E>::iterator getRoot() { return pos(1); }
-    typename vector<E>::iterator getLast() { return pos(getLength()); }
+    Position getRoot() { return getPosition(1); }
+    Position getLast() { return getPosition(getLength()); }
 
-    typename vector<E>::iterator getParent(typename vector<E>::iterator position) {
-        return pos(idx(position) / 2);
+    Position getParent(Position pos) {
+        return getPosition(getIdx(pos) / 2);
     }
 
-    typename vector<E>::iterator getLeft(typename vector<E>::iterator position) {
-        return pos(2 * idx(position));
+    Position getLeft(Position pos) {
+        return getPosition(2 * getIdx(pos));
     }
 
-    typename vector<E>::iterator getRight(typename vector<E>::iterator position) {
-        return pos(2 * idx(position) + 1);
+    Position getRight(Position pos) {
+        return getPosition(2 * getIdx(pos) + 1);
     }
 
-    bool hasLeft(typename vector<E>::iterator position) {
-        return (2 * idx(position)) <= getLength();
+    bool hasLeft(Position pos) {
+        return (2 * getIdx(pos)) <= getLength();
     }
 
-    bool hasRight(typename vector<E>::iterator position) {
-        return ((2 * idx(position)) + 1) <= getLength();
+    bool hasRight(Position pos) {
+        return ((2 * getIdx(pos)) + 1) <= getLength();
     }
 
-    bool isRoot(typename vector<E>::iterator position) {
-        return idx(position) == 1;
+    bool isRoot(Position pos) {
+        return getIdx(pos) == 1;
     }
 };
 

@@ -7,21 +7,24 @@
 template <typename E>
 class BinaryPosition {
 private:
-    BinaryNode<E> *node;
+    typedef BinaryNode<E> Node;
+    typedef BinaryPosition<E> Position;
+
+    Node *node;
 public:
     BinaryPosition(): node(nullptr) {}
-    BinaryPosition(BinaryNode<E> *node): node(node) {}
+    BinaryPosition(Node *node): node(node) {}
 
     E operator*() const { return node->getElem(); }
 
     bool isRoot() const { return node->getParent() == nullptr; }
     bool isExternal() const { return node->getLeft() == nullptr && node->getRight() == nullptr; }
 
-    BinaryNode<E> *getNode() { return node; }
+    Node *getNode() { return node; }
 
-    BinaryPosition getParent() { return BinaryPosition<E>(node->getParent()); }
-    BinaryPosition getLeft() { return BinaryPosition<E>(node->getLeft()); }
-    BinaryPosition getRight() { return BinaryPosition<E>(node->getRight()); }
+    Position getParent() { return Position(node->getParent()); }
+    Position getLeft() { return Position(node->getLeft()); }
+    Position getRight() { return Position(node->getRight()); }
 };
 
 #endif //DATA_STRUCTURE_LECTURE_BINARYPOSITION_H

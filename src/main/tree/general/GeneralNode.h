@@ -7,27 +7,29 @@
 template <typename E>
 class GeneralNode {
 private:
+    typedef GeneralNode<E> Node;
+
     E elem;
-    GeneralNode<E> *parent;
-    vector<GeneralNode<E>*> *children;
+    Node *parent;
+    vector<Node*> *children;
 public:
-    GeneralNode(): parent(nullptr), children(new vector<GeneralNode<E>*>()) {}
-    GeneralNode(E elem, GeneralNode<E> *parent): elem(elem), parent(parent), children(new vector<GeneralNode<E>*>()) {}
+    GeneralNode(): parent(nullptr), children(new vector<Node*>()) {}
+    GeneralNode(E elem, Node *parent): elem(elem), parent(parent), children(new vector<Node*>()) {}
 
     E getElem() const {
         return elem;
     }
 
-    GeneralNode<E> *getParent() const {
+    Node *getParent() const {
         return parent;
     }
 
-    vector<GeneralNode<E>*> *getChildren() const {
+    vector<Node*> *getChildren() const {
         return children;
     }
 
-    GeneralNode<E> *addNode(E elem) {
-        GeneralNode<E> *newNode = new GeneralNode<E>(elem, this);
+    Node *addNode(E elem) {
+        Node *newNode = new Node(elem, this);
 
         children->push_back(newNode);
 

@@ -7,22 +7,25 @@
 template <typename E>
 class GeneralPosition {
 private:
-    GeneralNode<E> *node;
+    typedef GeneralNode<E> Node;
+    typedef GeneralPosition<E> Position;
+
+    Node *node;
 public:
     GeneralPosition(): node(nullptr) {}
-    GeneralPosition(GeneralNode<E> *node): node(node) {}
+    GeneralPosition(Node *node): node(node) {}
 
     E operator*() const { return node->getElem(); };
-    GeneralNode<E> *getNode() { return node; };
-    GeneralPosition<E> getParent() const { return GeneralPosition<E>(node->getParent()); };
+    Node *getNode() { return node; };
+    Position getParent() const { return Position(node->getParent()); };
 
-    vector<GeneralPosition<E>> *getChildren() const {
-        vector<GeneralPosition<E>> *positions = new vector<GeneralPosition<E>>();
+    vector<Position> *getChildren() const {
+        vector<Position> *positions = new vector<Position>();
 
-        vector<GeneralNode<E>*> *children = node->getChildren();
-        typename vector<GeneralNode<E>*>::iterator iter;
+        vector<Node*> *children = node->getChildren();
+        typename vector<Node*>::iterator iter;
         for (iter = children->begin(); iter != children->end(); ++iter) {
-            positions->push_back(GeneralPosition<E>(*iter));
+            positions->push_back(Position(*iter));
         }
 
         return positions;
