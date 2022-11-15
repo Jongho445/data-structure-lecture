@@ -2,7 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_BINARYSEARCHTREETEST_H
 
 
-#include "../../main/search_tree/bst/BinarySearchTree.h"
+#include "../../main/tree/search/BinarySearchTree.h"
 
 using namespace std;
 

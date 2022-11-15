@@ -17,7 +17,8 @@
 
 #include "tree/GeneralTreeTest.h"
 #include "heap/HeapPriorityQueueTest.h"
-#include "search_tree/BinarySearchTreeTest.h"
+#include "tree/BinarySearchTreeTest.h"
+#include "hash/HashMapTest.h"
 
 
 int main() {
@@ -39,6 +40,7 @@ int main() {
 //    GeneralTreeTest::run();
 //    HeapPriorityQueueTest::run();
     BinarySearchTreeTest::run();
+    HashMapTest::run();
 
     return EXIT_SUCCESS;
 }

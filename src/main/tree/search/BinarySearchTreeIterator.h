@@ -2,8 +2,8 @@
 #define DATA_STRUCTURE_LECTURE_BINARYSEARCHTREEITERATOR_H
 
 
-#include "Entry.h"
-#include "../../tree/binary/BinaryPosition.h"
+#include "../../hash/Entry.h"
+#include "../binary/BinaryPosition.h"
 
 template <typename K, typename V>
 class BinarySearchTreeIterator {

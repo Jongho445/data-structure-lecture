@@ -3,8 +3,8 @@
 
 
 #include "BinarySearchTreeIterator.h"
-#include "../../tree/binary/BinaryPosition.h"
-#include "../../tree/binary/LinkedBinaryTree.h"
+#include "../binary/BinaryPosition.h"
+#include "../binary/LinkedBinaryTree.h"
 #include "../../exception/NotExistElement.h"
 
 template <typename K, typename V>
