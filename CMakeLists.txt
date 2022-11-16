@@ -23,7 +23,7 @@ add_executable(
         src/main/tree/general/GeneralTree.h src/test/tree/GeneralTreeTest.h src/main/tree/general/GeneralPosition.h src/main/tree/general/GeneralTreeHelper.h src/main/tree/general/GeneralNode.h
         src/main/tree/binary/LinkedBinaryTree.h src/main/tree/binary/BinaryNode.h src/main/tree/binary/BinaryPosition.h src/main/tree/Traversal.h
         src/main/heap/VectorCompleteTree.h src/main/heap/HeapPriorityQueue.h src/test/heap/HeapPriorityQueueTest.h
-        src/main/hash/Entry.h src/main/tree/search/BinarySearchTree.h src/test/tree/BinarySearchTreeTest.h src/main/tree/search/BinarySearchTreeIterator.h src/main/exception/NotExistElement.h
-        src/test/hash/HashMapTest.h src/main/hash/HashMap.h src/main/hash/HashMapIterator.h
+        src/main/map/Entry.h src/main/tree/search/BinarySearchTree.h src/test/tree/BinarySearchTreeTest.h src/main/tree/search/BinarySearchTreeIterator.h src/main/exception/NotExistElement.h
+        src/test/map/HashMapTest.h src/main/map/HashMap.h src/main/map/HashMapIterator.h
 )
 

@@ -2,7 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_BINARYSEARCHTREEITERATOR_H
 
 
-#include "../../hash/Entry.h"
+#include "../../map/Entry.h"
 #include "../binary/BinaryPosition.h"
 
 template <typename K, typename V>

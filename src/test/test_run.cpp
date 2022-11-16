@@ -18,7 +18,7 @@
 #include "tree/GeneralTreeTest.h"
 #include "heap/HeapPriorityQueueTest.h"
 #include "tree/BinarySearchTreeTest.h"
-#include "hash/HashMapTest.h"
+#include "map/HashMapTest.h"
 
 
 int main() {

@@ -1,7 +1,7 @@
 #ifndef DATA_STRUCTURE_LECTURE_HASHMAPTEST_H
 #define DATA_STRUCTURE_LECTURE_HASHMAPTEST_H
 
-#include "../../main/hash/HashMap.h"
+#include "../../main/map/HashMap.h"
 
 using namespace std;
 
