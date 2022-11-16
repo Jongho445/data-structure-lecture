@@ -9,6 +9,8 @@ class HashMapTest {
 public:
     static void run() {
         HashMap<string, string> map = HashMap<string, string>();
+
+        map.begin();
     }
 };
 

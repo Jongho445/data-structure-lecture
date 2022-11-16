@@ -14,18 +14,34 @@ private:
     typedef Entry<K, V> Entry;
     typedef list<Entry> Bucket;
 
+    typedef typename Bucket::iterator BucketIterator;
+    typedef typename vector<Bucket>::iterator BucketsIterator;
+
     int size;
     hash<K> h;
     vector<Bucket> buckets;
 public:
-    HashMap(int capacity = 100) : h(hash<K>()) {}
+    HashMap(int capacity = 100) : size(0), h(hash<K>()), buckets(vector<Bucket>()) {}
 
-    int getSize() const {}
+    int getSize() const { return size; }
+    bool isEmpty() const { return size == 0; }
 
-    bool isEmpty() const {}
+    Iterator begin() {
+        if (isEmpty()) {
+            return end();
+        }
 
-    Iterator begin() {}
-    Iterator end() {}
+        BucketsIterator bucketsIter = buckets.begin();
+        while ((*bucketsIter).empty()) {
+            ++bucketsIter;
+        }
+
+        return Iterator(&buckets, bucketsIter, (*bucketsIter).begin());
+    }
+    
+    Iterator end() {
+        return Iterator(&buckets, buckets.end());
+    }
 
     Iterator find(K key) {}
 
