@@ -39,7 +39,7 @@ int main() {
 //
 //    GeneralTreeTest::run();
 //    HeapPriorityQueueTest::run();
-    BinarySearchTreeTest::run();
+//    BinarySearchTreeTest::run();
     HashMapTest::run();
 
     return EXIT_SUCCESS;

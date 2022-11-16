@@ -10,57 +10,127 @@
 template <typename K, typename V>
 class HashMap {
 private:
-    typedef HashMapIterator<K, V> Iterator;
+    typedef HashMapIterator<K, V> MapIterator;
     typedef Entry<K, V> Entry;
-    typedef list<Entry> Bucket;
-
+    typedef list<Entry*> Bucket;
+    typedef vector<Bucket*> BucketList;
     typedef typename Bucket::iterator BucketIterator;
-    typedef typename vector<Bucket>::iterator BucketsIterator;
+    typedef typename BucketList::iterator BucketListIterator;
+
+    BucketList *bl;
 
     int size;
     hash<K> h;
-    vector<Bucket> buckets;
 public:
-    HashMap(int capacity = 100) : size(0), h(hash<K>()), buckets(vector<Bucket>()) {}
+    HashMap(int capacity = 100) : bl(new BucketList()), size(0), h(hash<K>()) {
+        for (int i = 0; i < capacity; i++) {
+            bl->push_back(new Bucket());
+        }
+    }
+
+    ~HashMap() { delete bl; }
 
     int getSize() const { return size; }
     bool isEmpty() const { return size == 0; }
 
-    Iterator begin() {
+    MapIterator begin() {
         if (isEmpty()) {
             return end();
         }
 
-        BucketsIterator bucketsIter = buckets.begin();
-        while ((*bucketsIter).empty()) {
-            ++bucketsIter;
+        BucketListIterator blIter = bl->begin();
+        while ((*blIter)->empty()) {
+            ++blIter;
         }
 
-        return Iterator(&buckets, bucketsIter, (*bucketsIter).begin());
+        return MapIterator(bl, blIter, (*blIter)->begin());
     }
     
-    Iterator end() {
-        return Iterator(&buckets, buckets.end());
+    MapIterator end() {
+        return MapIterator(bl, bl->end());
     }
 
-    Iterator find(K key) {}
+    MapIterator find(K key) {
+        MapIterator mIter = finder(key);
 
-    Iterator put(K key, V value) {}
+        if (mIter.isLastEntityInBucket()) {
+            return end();
+        } else {
+            return mIter;
+        }
+    }
 
-    void erase(K key) {}
+    MapIterator put(K key, V value) {
+        MapIterator mIter = finder(key);
 
-    void erase(Iterator iter) {}
+        if (mIter.isLastEntityInBucket()) {
+            return inserter(mIter, new Entry(key, value));
+        } else {
+            Entry *entry = *(mIter.getBucketIter());
+
+            entry->setValue(value);
+
+            return mIter;
+        }
+    }
+
+    void erase(K key) {
+        MapIterator mIter = finder(key);
+
+        if (mIter.isLastEntityInBucket()) {
+            throw NotExistElement("Not Exist Elemet!");
+        }
+
+        eraser(mIter);
+    }
+
+    void erase(MapIterator iter) {
+        eraser(iter);
+    }
+    
+    void printMap() {
+        cout << "[ ";
+        for (MapIterator mIter = begin(); mIter != end(); ++mIter) {
+            cout << **mIter;
+            cout << ", ";
+        }
+        cout << "]" << endl;
+    }
 
 private:
-    Iterator finder(K key) {}
+    MapIterator finder(K key) {
+        int idx = h(key) % bl->size();
 
-    Iterator inserter(Iterator iter, Entry entry) {}
+        BucketListIterator blIter = bl->begin() + idx;
+        Bucket *bucket = *blIter;
+        BucketIterator bIter = bucket->begin();
 
-    void eraser(Iterator iter) {}
+        MapIterator mIter = MapIterator(bl, blIter, bIter);
+        Entry *entry = *mIter;
+        while (!mIter.isLastEntityInBucket() && entry->getKey() != key) {
+            mIter.nextEntry();
+        }
+        
+        return mIter;
+    }
 
-    static void nextEntry(Iterator iter) {}
+    MapIterator inserter(MapIterator mIter, Entry *entry) {
+        BucketListIterator blIter = mIter.getBucketListIter();
+        BucketIterator bIterAtLast = mIter.getBucketIter();
 
-    static bool endOfBucket(Iterator iter) {}
+        Bucket *bucket = *blIter;
+        BucketIterator bIterAtTarget = bucket->insert(bIterAtLast, entry);
+        size++;
+
+        return MapIterator(bl, blIter, bIterAtTarget);
+    }
+
+    void eraser(MapIterator mIter) {
+        Bucket *bucket = *(mIter.getBucketListIter());
+
+        bucket->erase(mIter.getBucketIter());
+        size--;
+    }
 };
 
 #endif //DATA_STRUCTURE_LECTURE_HASHMAP_H

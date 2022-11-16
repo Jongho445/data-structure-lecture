@@ -5,71 +5,78 @@
 template <typename K, typename V>
 class HashMapIterator {
 private:
-    typedef HashMapIterator<K, V> Iterator;
+    typedef HashMapIterator<K, V> MapIterator;
     typedef Entry<K, V> Entry;
-    typedef list<Entry> Bucket;
-
+    typedef list<Entry*> Bucket;
+    typedef vector<Bucket*> BucketList;
     typedef typename Bucket::iterator BucketIterator;
-    typedef typename vector<Bucket>::iterator BucketsIterator;
+    typedef typename BucketList::iterator BucketListIterator;
 
-    vector<Bucket> *buckets;
+    BucketList *bl;
 
-    BucketIterator bucketIter;
-    BucketsIterator bucketsIter;
+    BucketIterator bIter;
+    BucketListIterator blIter;
 public:
-//    HashMapIterator() : buckets(nullptr), bucketsIter(BucketsIterator()), bucketIter(BucketIterator()) {}
-    HashMapIterator(vector<Bucket> *b, BucketsIterator bsi) : buckets(b), bucketsIter(bsi), bucketIter(BucketIterator()) {}
-    HashMapIterator(vector<Bucket> *b, BucketsIterator bsi, BucketIterator bi) : buckets(b), bucketsIter(bsi), bucketIter(bi) {}
+    HashMapIterator(BucketList *bl, BucketListIterator blIter) : bl(bl), blIter(blIter), bIter(BucketIterator()) {}
+    HashMapIterator(BucketList *bl, BucketListIterator blIter, BucketIterator bIter) : bl(bl), blIter(blIter), bIter(bIter) {}
 
-    Entry operator*() { return *bucketIter; }
+    Entry *operator*() { return *bIter; }
 
-    bool operator==(Iterator iter) {
-        if (buckets != iter.buckets || bucketsIter != iter.bucketsIter) {
-            return false;
-        } else if (bucketsIter == buckets->end()) {
+    bool operator==(MapIterator mIter) {
+        if (isEnd() == mIter.isEnd()) {
             return true;
         }
 
-        return bucketIter == iter.bucketIter;
+        if (bl != mIter.bl || blIter != mIter.blIter) {
+            return false;
+        }
+
+        return bIter == mIter.bIter;
     }
 
-    Iterator operator++() {
+    bool operator!=(MapIterator mIter) { return !operator==(mIter); }
+
+    MapIterator operator++() {
         //다음 Entry로 이동
-        ++bucketIter;
+        ++bIter;
 
         // 이동한 다음 Entry가 end of bucket이라면?
-        if (isEndOfBucket()) {
+        if (isLastEntityInBucket()) {
             // 다음 bucket으로 이동
-            ++bucketsIter;
+            ++blIter;
 
             // 해당 bucket이 비어있으면서 마지막 bucket이 아니면 skip
             // -> 해당 bucket이 비어있지 않거나 마지막 bucket이면 not skip(드모르간)
-            while ((*bucketsIter).empty() && bucketsIter != buckets->end()) {
-                ++bucketsIter;
+            // 참고로 순서를 (*blIter)->empty() && blIter != bl->end()로 하면 end 이터레이터의 operator*를 호출하기에 에러남
+            while (blIter != bl->end() && (*blIter)->empty()) {
+                ++blIter;
             }
 
             // 해당 bucket이 마지막 bucket이 아니라면 Entry를 bucket의 첫 번째 Entry로 초기화
-            if (bucketsIter != buckets->end()) {
-                bucketIter = (*bucketsIter).begin();
+            if (blIter != bl->end()) {
+                bIter = (*blIter)->begin();
             }
         }
 
         return *this;
     }
 
-    BucketIterator getBucketIter() { return bucketsIter; }
-    BucketsIterator getBucketsIter() { return bucketsIter; }
-    vector<Bucket> *getBuckets() { return buckets; };
+    bool isLastEntityInBucket() {
+        Bucket *bucket = *blIter;
 
-    void setBucketIter(BucketIterator bucketIter) { this->bucketIter = bucketIter; }
-    void setBucketsIter(BucketsIterator bucketsIter) { this->bucketsIter = bucketsIter; }
-    void *setBuckets(vector<Bucket> *buckets) { this->buckets = buckets; };
-    
+        return bIter == bucket->end();
+    }
+
+    void nextEntry() {
+        ++bIter;
+    }
+
+    BucketIterator getBucketIter() { return bIter; }
+    BucketListIterator getBucketListIter() { return blIter; }
+
 protected:
-    void nextEntry() { ++bucketIter; }
-    
-    bool isEndOfBucket() {
-        return bucketIter == (*bucketsIter).end();
+    bool isEnd() {
+        return blIter == bl->end();
     }
 };
 
