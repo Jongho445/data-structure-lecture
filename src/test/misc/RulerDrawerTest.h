@@ -2,7 +2,7 @@
 #define DATA_STRUCTURE_LECTURE_RULERDRAWERTEST_H
 
 
-#include "../../main/algorithm/ruler_drawer/RulerDrawer.h"
+#include "../../main/misc/ruler_drawer/RulerDrawer.h"
 
 class RulerDrawerTest {
 public:

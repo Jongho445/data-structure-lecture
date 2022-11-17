@@ -1,13 +1,13 @@
-#ifndef DATA_STRUCTURE_LECTURE_INSERTIONSORTTEST_H
-#define DATA_STRUCTURE_LECTURE_INSERTIONSORTTEST_H
+#ifndef DATA_STRUCTURE_LECTURE_SORTTEST_H
+#define DATA_STRUCTURE_LECTURE_SORTTEST_H
 
 
 #include "iostream"
-#include "../../main/algorithm/insertion_sort/SortableArray.h"
+#include "../../main/sort/SortableArray.h"
 
 using namespace std;
 
-class InsertionSortTest {
+class SortTest {
 public:
     static void run() {
         // given
@@ -28,4 +28,4 @@ public:
 };
 
 
-#endif //DATA_STRUCTURE_LECTURE_INSERTIONSORTTEST_H
+#endif //DATA_STRUCTURE_LECTURE_SORTTEST_H

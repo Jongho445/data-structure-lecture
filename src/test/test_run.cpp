@@ -1,8 +1,7 @@
 #include "cstdlib"
 
-#include "algorithm/GameScoresTest.h"
-#include "algorithm/InsertionSortTest.h"
-#include "algorithm/RulerDrawerTest.h"
+#include "misc/GameScoresTest.h"
+#include "misc/RulerDrawerTest.h"
 #include "linked_list/SinglyLinkedListTest.h"
 #include "linked_list/DoublyLinkedListTest.h"
 #include "linked_list/CircularlyLinkedListTest.h"
@@ -15,6 +14,7 @@
 #include "adt/ArrayVectorTest.h"
 #include "adt/NodeListTest.h"
 
+#include "sort/SortTest.h"
 #include "tree/GeneralTreeTest.h"
 #include "heap/HeapPriorityQueueTest.h"
 #include "tree/BinarySearchTreeTest.h"
@@ -23,7 +23,6 @@
 
 int main() {
 //    GameScoresTest::run();
-//    InsertionSortTest::run();
 //    RulerDrawerTest::run();
 //    SinglyLinkedListTest::run();
 //    DoublyLinkedListTest::run();
@@ -37,6 +36,7 @@ int main() {
 //    ArrayVectorTest::run();
 //    NodeListTest::run();
 //
+//    SortTest::run();
 //    GeneralTreeTest::run();
 //    HeapPriorityQueueTest::run();
 //    BinarySearchTreeTest::run();
