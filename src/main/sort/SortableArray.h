@@ -1,24 +1,39 @@
 #ifndef DATA_STRUCTURE_LECTURE_SORTABLEARRAY_H
 #define DATA_STRUCTURE_LECTURE_SORTABLEARRAY_H
 
-#include "string"
-
-using namespace std;
-
+template <typename E>
 class SortableArray {
+protected:
+    E *arr;
+    int size;
 public:
-    SortableArray(int size);
-    ~SortableArray();
+    SortableArray(int capacity) {
+        arr = new E[capacity];
+        size = 0;
+    }
 
-    void insertionSort();
+    ~SortableArray() {
+        delete[] arr;
+    }
 
-    void add(char data);
-    string toString();
-private:
-    char *chars;
-    int length;
+    virtual void sort() = 0;
 
-    int shiftElemsGreaterThan(int pivotIdx, char cur);
+    void add(E data) {
+        arr[size] = data;
+        size++;
+    }
+
+    void print() {
+        cout << "[ ";
+        for(int i = 0; i < size; i++) {
+            cout << arr[i];
+            if (i != size - 1) {
+                cout << ", ";
+            } else {
+                cout << " ]" << endl;
+            }
+        }
+    }
 };
 
 

@@ -19,7 +19,7 @@ public:
     VectorCompleteTree(): list(vector<E>(1)) {}
 
     // vector complete tree는 맨 앞의 원소를 사용하지 않기에 lastIdx와 length가 같다
-    // (lastIdx == length - 1이 아니라는 말이다)
+    // (lastIdx == size - 1이 아니라는 말이다)
     int getLastIdx() const {
         return list.size() - 1;
     }

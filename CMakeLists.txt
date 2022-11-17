@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(
         data_structure_lecture src/test/test_run.cpp
         src/main/misc/game_score/GameEntry.h src/main/misc/game_score/GameEntry.cpp src/main/misc/game_score/Scores.cpp src/main/misc/game_score/Scores.h src/main/exception/IndexOutOfBounds.h src/test/misc/GameScoresTest.h
-        src/test/sort/SortTest.h src/main/sort/SortableArray.cpp src/main/sort/SortableArray.h
+        src/test/sort/SortTest.h src/main/sort/SortableArray.h
         src/test/linked_list/SinglyLinkedListTest.h src/main/linked_list/SLinkedList.h
         src/main/linked_list/node/DoubleNode.h src/main/linked_list/DLinkedList.h src/test/linked_list/DoublyLinkedListTest.h
         src/main/linked_list/node/SingleNode.h src/main/linked_list/CircleList.h src/test/linked_list/CircularlyLinkedListTest.h
@@ -25,5 +25,6 @@ add_executable(
         src/main/heap/VectorCompleteTree.h src/main/heap/HeapPriorityQueue.h src/test/heap/HeapPriorityQueueTest.h
         src/main/map/Entry.h src/main/tree/search/BinarySearchTree.h src/test/tree/BinarySearchTreeTest.h src/main/tree/search/BinarySearchTreeIterator.h src/main/exception/NotExistElement.h
         src/test/map/HashMapTest.h src/main/map/HashMap.h src/main/map/HashMapIterator.h
+        src/main/sort/InsertionSortArray.h src/main/sort/BubbleSortArray.h
 )
 
