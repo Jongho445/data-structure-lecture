@@ -14,6 +14,9 @@ public:
 
         tree.erase(5);
         tree.printTree();
+
+        BinarySearchTreeIterator<int, string> iter = tree.find(10);
+        cout << **iter << endl;
     }
 
     static BinarySearchTree<int, string> createTree() {

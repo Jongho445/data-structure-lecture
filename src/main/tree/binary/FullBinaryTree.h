@@ -37,11 +37,13 @@ public:
             sibling->setParent(nullptr);
         } else {
             Node *grandParent = parent->getParent();
+
             if (parent == grandParent->getLeft()) {
                 grandParent->setLeft(sibling);
             } else {
                 grandParent->setRight(sibling);
             }
+
             sibling->setParent(grandParent);
         }
 

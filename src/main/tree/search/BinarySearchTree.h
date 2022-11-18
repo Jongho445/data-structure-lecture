@@ -25,27 +25,32 @@ public:
     bool isEmpty() { return length == 0; }
 
     Iterator begin() {
+        // pos == BstRoot
         Position pos = getBstRoot();
 
+        // pos를 왼쪽 끝의 exteranalNode까지 이동시킴
         while (pos.isInternal()) {
             pos = pos.getLeft();
         }
 
+        // 왼쪽 끝 externalNode의 부모(최초의 유효 노드)부터 시작
         return Iterator(pos.getParent());
     }
 
     Iterator end() {
+        // root 노드가 곧 end 노드이다.
+        // root 노드는 BstRoot와 다름을 주의하자. BstRoot는 root.left이다.
         return Iterator(tree.getRoot());
     }
 
     Iterator find(K key) {
         Position pos = finder(key, getBstRoot());
 
-        if (pos.isInternal()) {
-            return Iterator(pos);
-        } else {
-            return end();
+        if (pos.isExternal()) {
+            throw NotExistElement("this key does Not Exist!");
         }
+
+        return Iterator(pos);
     }
 
     Iterator insert(K key, V value) {
@@ -92,6 +97,7 @@ protected:
             return finder(key, pos.getRight());
         }
 
+        // (*pos)->getKey() == key
         return pos;
     }
 
