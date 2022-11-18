@@ -26,6 +26,5 @@ add_executable(
         src/main/map/Entry.h src/main/tree/search/BinarySearchTree.h src/test/tree/BinarySearchTreeTest.h src/main/tree/search/BinarySearchTreeIterator.h src/main/exception/NotExistElement.h
         src/test/map/HashMapTest.h src/main/map/HashMap.h src/main/map/HashMapIterator.h
         src/main/sort/InsertionSortArray.h src/main/sort/BubbleSortArray.h
-        src/main/tree/binary/BinaryInorderPosition.h
 )
 

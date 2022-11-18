@@ -5,13 +5,11 @@
 #include "BinarySearchTreeIterator.h"
 #include "../binary/BinaryPosition.h"
 #include "../binary/FullBinaryTree.h"
-#include "../binary/BinaryInorderPosition.h"
 #include "../../exception/NotExistElement.h"
 
 template <typename K, typename V>
 class BinarySearchTree {
 private:
-//    typedef BinaryInorderPosition<Entry<K, V>*> Position;
     typedef BinaryPosition<Entry<K, V>*> Position;
     typedef BinarySearchTreeIterator<K, V> Iterator;
     typedef FullBinaryTree<Entry<K, V>*> BinaryTree;
@@ -23,9 +21,9 @@ public:
         tree.addRoot();
         tree.expandExternal(tree.getRoot());
     }
-    
+
     bool isEmpty() { return length == 0; }
-    
+
     Iterator begin() {
         Position pos = getBstRoot();
 
@@ -58,11 +56,11 @@ public:
 
     void erase(K key) throw(NotExistElement){
         Position pos = finder(key, getBstRoot());
-        
+
         if (pos.isExternal()) {
             throw NotExistElement("this key does Not Exist!");
         }
-        
+
         eraser(pos);
     }
 
@@ -107,7 +105,7 @@ protected:
         pos.getNode()->setElem(new Entry<K, V>(key, value));
         tree.expandExternal(pos);
         length++;
-        
+
         return pos;
     }
 
