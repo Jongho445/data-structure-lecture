@@ -28,7 +28,19 @@ public:
         }
     }
 
-    ~HashMap() { delete bl; }
+    ~HashMap() {
+        for (BucketListIterator blIter = bl->begin(); blIter != bl->end(); ++blIter) {
+            Bucket *bucket = *blIter;
+
+            for (BucketIterator bIter = bucket->begin(); bIter != bucket->end(); ++bIter) {
+                delete *bIter;
+            }
+
+            delete bucket;
+        }
+
+        delete bl;
+    }
 
     int getSize() const { return size; }
     bool isEmpty() const { return size == 0; }

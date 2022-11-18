@@ -24,22 +24,22 @@ public:
 
     Iterator operator++() {
         Position desc = pos.getRight();
-
         if (desc.isInternal()) {
             do {
                 pos = desc;
                 desc = desc.getLeft();
             } while (desc.isInternal());
-        } else {
-            Position ancestor = pos.getParent();
 
-            while (pos == ancestor.getRight()) {
-                pos = ancestor;
-                ancestor = ancestor.getParent();
-            }
-
-            pos = ancestor;
+            return *this;
         }
+
+        Position ancestor = pos.getParent();
+        while (pos == ancestor.getRight()) {
+            pos = ancestor;
+            ancestor = ancestor.getParent();
+        }
+
+        pos = ancestor;
 
         return *this;
     }
