@@ -4,15 +4,17 @@
 
 #include "BinarySearchTreeIterator.h"
 #include "../binary/BinaryPosition.h"
-#include "../binary/LinkedBinaryTree.h"
+#include "../binary/FullBinaryTree.h"
+#include "../binary/BinaryInorderPosition.h"
 #include "../../exception/NotExistElement.h"
 
 template <typename K, typename V>
 class BinarySearchTree {
 private:
+//    typedef BinaryInorderPosition<Entry<K, V>*> Position;
     typedef BinaryPosition<Entry<K, V>*> Position;
     typedef BinarySearchTreeIterator<K, V> Iterator;
-    typedef LinkedBinaryTree<Entry<K, V>*> BinaryTree;
+    typedef FullBinaryTree<Entry<K, V>*> BinaryTree;
 
     BinaryTree tree;
     int length;
@@ -25,7 +27,7 @@ public:
     bool isEmpty() { return length == 0; }
     
     Iterator begin() {
-        Position pos = getRoot();
+        Position pos = getBstRoot();
 
         while (pos.isInternal()) {
             pos = pos.getLeft();
@@ -39,7 +41,7 @@ public:
     }
 
     Iterator find(K key) {
-        Position pos = finder(key, getRoot());
+        Position pos = finder(key, getBstRoot());
 
         if (pos.isInternal()) {
             return Iterator(pos);
@@ -55,7 +57,7 @@ public:
     }
 
     void erase(K key) throw(NotExistElement){
-        Position pos = finder(key, getRoot());
+        Position pos = finder(key, getBstRoot());
         
         if (pos.isExternal()) {
             throw NotExistElement("this key does Not Exist!");
@@ -77,7 +79,7 @@ public:
     }
 
 protected:
-    Position getRoot() {
+    Position getBstRoot() {
         return tree.getRoot().getLeft();
     }
 
@@ -90,13 +92,13 @@ protected:
             return finder(key, pos.getLeft());
         } else if ((*pos)->getKey() < key) {
             return finder(key, pos.getRight());
-        } else {
-            return pos;
         }
+
+        return pos;
     }
 
     Position inserter(K key, V value) {
-        Position pos = finder(key, getRoot());
+        Position pos = finder(key, getBstRoot());
 
         while (pos.isInternal()) {
             pos = finder(key, pos.getRight());
@@ -110,31 +112,33 @@ protected:
     }
 
     Position eraser(Position pos) {
-        // 자손 (descendants)
-        Position desc;
-        
-        if (pos.getLeft().isExternal()) {
-            desc = pos.getLeft();
-        } else if (pos.getRight().isExternal()) {
-            desc = pos.getRight();
-        } else {
-            desc = pos.getRight();
-            
-            do {
-                desc = desc.getLeft();
-            } while (desc.isInternal());
-
-            Position parentDesc = desc.getParent();
-
-            Entry<K, V> *parentEntry = parentDesc.operator*();
-            pos.getNode()->setElem(parentEntry);
-        }
+        Position desc = getDescendant(pos);
 
         length--;
-
         return tree.removeAboveExternal(desc);
     }
 
+    Position getDescendant(Position pos) {
+        if (pos.getLeft().isExternal()) {
+            return pos.getLeft();
+        } else if (pos.getRight().isExternal()) {
+            return pos.getRight();
+        }
+
+        // 자손 (descendant)
+        Position desc = pos.getRight();
+
+        do {
+            desc = desc.getLeft();
+        } while (desc.isInternal());
+
+        Position parentDesc = desc.getParent();
+        Entry<K, V> *parentEntry = *parentDesc;
+
+        pos.getNode()->setElem(parentEntry);
+
+        return desc;
+    }
 };
 
 #endif //DATA_STRUCTURE_LECTURE_BINARYSEARCHTREE_H

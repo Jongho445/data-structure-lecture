@@ -16,7 +16,7 @@ protected:
     Node *root;
     int length;
 public:
-    LinkedBinaryTree(): root(new BinaryNode<E>(nullptr)), length(0) {}
+    LinkedBinaryTree(): length(0) {}
     ~LinkedBinaryTree() {
         vector<Position> *positions = getPositions(Traversal::PREORDER);
 
@@ -33,45 +33,6 @@ public:
     void addRoot() {
         root = new Node();
         length = 1;
-    }
-    
-    void expandExternal(Position pos) {
-        Node *node = pos.getNode();
-
-        node->setLeft(new Node(node));
-        node->setRight(new Node(node));
-
-        length += 2;
-    }
-
-    Position removeAboveExternal(Position leaf) {
-        if (!leaf.isExternal()) {
-            return Position(nullptr);
-        }
-
-        Node *target = leaf.getNode();
-        Node *parent = target->getParent();
-        Node *sibling = (target == parent->getLeft() ? parent->getRight() : parent->getLeft());
-
-        if (parent == root) {
-            root = sibling;
-            sibling->setParent(nullptr);
-        } else {
-            Node *grandParent = parent->getParent();
-            if (parent == grandParent->getLeft()) {
-                grandParent->setLeft(sibling);
-            } else {
-                grandParent->setRight(sibling);
-            }
-            sibling->setParent(grandParent);
-        }
-
-        delete target;
-        delete parent;
-
-        length -= 2;
-
-        return Position(sibling);
     }
 
     void printTree(Traversal traversal) {

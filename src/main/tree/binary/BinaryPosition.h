@@ -6,7 +6,7 @@
 
 template <typename E>
 class BinaryPosition {
-private:
+protected:
     typedef BinaryNode<E> Node;
     typedef BinaryPosition<E> Position;
 
