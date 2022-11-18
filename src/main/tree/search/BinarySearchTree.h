@@ -10,9 +10,9 @@
 template <typename K, typename V>
 class BinarySearchTree {
 private:
-    typedef BinaryPosition<Entry<K, V>> Position;
+    typedef BinaryPosition<Entry<K, V>*> Position;
     typedef BinarySearchTreeIterator<K, V> Iterator;
-    typedef LinkedBinaryTree<Entry<K, V>> BinaryTree;
+    typedef LinkedBinaryTree<Entry<K, V>*> BinaryTree;
 
     BinaryTree tree;
     int length;
@@ -70,7 +70,7 @@ public:
 
     void printTree() {
         for (Iterator iter = begin(); iter != end(); ++iter) {
-            cout << *iter;
+            cout << **iter;
             cout << ", ";
         }
         cout << endl;
@@ -86,9 +86,9 @@ protected:
             return pos;
         }
 
-        if (key < pos.operator*().getKey()) {
+        if (key < (*pos)->getKey()) {
             return finder(key, pos.getLeft());
-        } else if (pos.operator*().getKey() < key) {
+        } else if ((*pos)->getKey() < key) {
             return finder(key, pos.getRight());
         } else {
             return pos;
@@ -102,12 +102,8 @@ protected:
             pos = finder(key, pos.getRight());
         }
 
-        pos.getNode()->setElem(Entry<K, V>(key, value));
-//        pos.operator*().setKey(key);
-//        pos.operator*().setValue(value);
-
+        pos.getNode()->setElem(new Entry<K, V>(key, value));
         tree.expandExternal(pos);
-        
         length++;
         
         return pos;
@@ -130,10 +126,8 @@ protected:
 
             Position parentDesc = desc.getParent();
 
-            Entry<K, V> parentEntry = parentDesc.operator*();
+            Entry<K, V> *parentEntry = parentDesc.operator*();
             pos.getNode()->setElem(parentEntry);
-//            pos.operator*().setKey(parentDesc.operator*().getKey());
-//            pos.operator*().setValue(parentDesc.operator*().getValue());
         }
 
         length--;

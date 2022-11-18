@@ -38,8 +38,8 @@ public:
     void expandExternal(Position pos) {
         Node *node = pos.getNode();
 
-        node->addLeftEmptyNode();
-        node->addRightEmptyNode();
+        node->setLeft(new Node(node));
+        node->setRight(new Node(node));
 
         length += 2;
     }

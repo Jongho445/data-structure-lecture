@@ -10,6 +10,7 @@ class BinarySearchTreeTest {
 public:
     static void run() {
         BinarySearchTree<int, string> tree = createTree();
+        tree.printTree();
 
         tree.erase(5);
         tree.printTree();

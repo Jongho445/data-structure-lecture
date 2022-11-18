@@ -11,11 +11,9 @@ class Entry {
 private:
     K key;
     V value;
-
-    bool isEmpty;
 public:
-    Entry() : isEmpty(true) {}
-    Entry(K key, V value) : key(key), value(value), isEmpty(false) {}
+    Entry() {}
+    Entry(K key, V value) : key(key), value(value) {}
 
     K getKey() { return key; }
     V getValue() { return value; }
@@ -24,11 +22,6 @@ public:
     void setValue(V value) { this->value = value; }
 
     friend ostream &operator <<(ostream &outs, Entry<K, V> entry) {
-        if (entry.isEmpty) {
-            cout << "{ empty }";
-            return outs;
-        }
-
         cout << "{ ";
         cout << entry.key;
         cout << ": ";

@@ -8,7 +8,7 @@
 template <typename K, typename V>
 class BinarySearchTreeIterator {
 private:
-    typedef BinaryPosition<Entry<K, V>> Position;
+    typedef BinaryPosition<Entry<K, V>*> Position;
     typedef BinarySearchTreeIterator<K, V> Iterator;
 
     Position pos;
@@ -17,7 +17,7 @@ public:
 
     Position getPosition() { return pos; }
 
-    Entry<K, V> operator*() { return *pos; }
+    Entry<K, V> *operator*() { return *pos; }
 
     bool operator==(Iterator iter) { return pos == iter.pos; }
     bool operator!=(Iterator iter) { return pos != iter.pos; }
